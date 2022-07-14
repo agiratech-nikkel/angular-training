@@ -1,0 +1,54 @@
+
+
+body {
+  font-family:sans-serif;
+}
+
+.center-item {
+  height: 100vh;
+  background-color: #4e5585;
+ .center-card{
+    height: inherit;
+}
+.titel{
+    color:white;
+}
+  form {
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 10px;
+    input {
+      width: 100%;
+      box-sizing: border-box;
+      margin-top: 20px;
+      outline: none;
+      border: none;
+      background-color: #ecf0f1;
+      padding: 10px;
+      line-height: 2;
+      font-size: 16px;
+    }
+    img{
+        height: 20vh;
+    }
+    button {
+      background-color: #ff7c88;
+      color: #fff;
+      font-size: 18px;
+      width: 100%;
+      height: 7vh;
+      outline: none;
+      border: none;
+      padding: 5px;
+      margin-top: 20px;
+      &:hover {
+        background-color: #afbfff;
+      }
+    }
+      a {
+        text-decoration: none;
+        color:#3B3B98;
+        padding-left: 3px;
+      }
+    }
+}

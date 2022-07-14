@@ -1,0 +1,15 @@
+<mat-card class="center-item">
+    <mat-card class="center-card" fxLayout="column" fxLayoutAlign="center center">
+        <h1 class="titel"> Hello there! 👋</h1>        
+        <form (submit)="login()">
+         <mat-card fxLayoutAlign="center">
+            <img fxLayoutAlign="Start" src="../../assets/1657790548138.png"/>
+         </mat-card>
+         <input type="text" [(ngModel)]="username" name="uaername" placeholder="Enter username" required>
+         <input type="password" placeholder="Enter password">
+         <button mat-button [routerLink]="['dashBoard']">Login</button>
+        </form>
+    </mat-card>
+
+</mat-card>
+
