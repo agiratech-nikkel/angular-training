@@ -12,6 +12,7 @@ export class LoginpageComponent implements OnInit {
   ngOnInit(): void {
   }
   login(){
-      localStorage.setItem('userData',this.username)
+      localStorage.setItem('u',this.username)
+      console.log(this.username)
   }
 }

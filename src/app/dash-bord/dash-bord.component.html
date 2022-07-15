@@ -1,1 +1,57 @@
-<p>dash-bord works!</p>
+<div>
+    <div class="header">
+        <mat-card class="navbar">Dashboard</mat-card>
+    </div>
+    <div>
+        <div class="card" fxLayout="row" fxLayoutAlign="center end" fxLayoutGap="100px">
+            <mat-card class="card1" fxFelx="100" fxLayout="row">
+                <div fxLayout="row">
+                    <mat-icon class="icon">schedule</mat-icon>
+                </div>
+                <div fxLayout="row">
+                    <div fxLayout="column">
+                        <h3 class="card-content-h">Actual hours</h3>
+                        <p id="card-content-p" class="">173</p>
+                        <hr class="line">
+                        <p id="card-content-m">Currently month timesheet</p>
+                    </div>
+                    <div fxLayout="column">
+                        <div>
+                            <h3 class="card-content-h">Filled hours</h3>
+                            <p id="card-content-p">173</p>
+                            <hr class="line">
+                            <p id="card-content-m">173/173</p>
+                        </div>
+                    </div>
+                </div>
+            </mat-card>
+            <mat-card class="card1" fxFelx="100" fxLayout="row">
+                <div fxLayout="row" fxFelx="100">
+                    <mat-icon fxFelx="100" class="icon">schedule</mat-icon>
+                </div>
+                <div fxLayout="row">
+                    <div fxLayout="column">
+                        <h3 class="card-content-h">Actual hours</h3>
+                        <p id="card-content-p" class="">173</p>
+                        <hr class="line">
+                        <p id="card-content-m">last month timesheet</p>
+                    </div>
+                    <div fxLayout="column">
+                        <div>
+                            <h3 class="card-content-h">Filled hours</h3>
+                            <p id="card-content-p" fxLayoutAlign="none end">173</p>
+                            <hr class="line">
+                            <p id="card-content-m">173/173</p>
+                        </div>
+                    </div>
+                </div>
+            </mat-card>
+        </div>
+        <div>
+            <div class="graph" fxFlex="50" fxLayout="row"fxLayoutAlign="start start">
+                <canvas id="myChart"></canvas>
+                <canvas id="myChart-1"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
