@@ -1,26 +1,36 @@
 <div>
     <div class="header">
-        <mat-card class="navbar">Dashboard</mat-card>
+        <mat-card class="navbar" fxLayout="row"> 
+            <div fxLayout="row">
+                <mat-icon class="homeIcon">home</mat-icon><span class="titel">Dashboard</span>
+            </div>
+            <div fxFlex="100" fxLayoutAlign="end">
+                <img class="img" src="../../assets/1657790548138.png" />
+            </div>
+        </mat-card>
     </div>
     <div>
-        <div class="card" fxLayout="row" fxLayoutAlign="center end" fxLayoutGap="100px">
+        <div class="card"  fxLayout.lt-sm="column" fxLayoutGap.lt-sm="10px" fxLayoutGap.lt-md="2px"
+            fxLayoutAlign="center end" fxLayoutAlign.lt-sm="start" fxLayoutGap="100px">
             <mat-card class="card1" fxFelx="100" fxLayout="row">
                 <div fxLayout="row">
                     <mat-icon class="icon">schedule</mat-icon>
                 </div>
                 <div fxLayout="row">
                     <div fxLayout="column">
-                        <h3 class="card-content-h">Actual hours</h3>
-                        <p id="card-content-p" class="">173</p>
+                        <div fxLayout="row">
+                            <div>
+                                <h3 class="card-content-h">Actual&nbsp;hours</h3>
+                                <p id="card-content-p" class="">173</p>
+                            </div>
+                            <div>
+                                <h3 class="card-content-h">Filled&nbsp;hours</h3>
+                                <p id="card-content-p">173</p>
+                            </div>
+                        </div>
                         <hr class="line">
-                        <p id="card-content-m">Currently month timesheet</p>
-                    </div>
-                    <div fxLayout="column">
-                        <div>
-                            <h3 class="card-content-h">Filled hours</h3>
-                            <p id="card-content-p">173</p>
-                            <hr class="line">
-                            <p id="card-content-m">173/173</p>
+                        <div fxLayout="row">
+                            <p id="card-content-m">Currently month timesheet 173/173</p>
                         </div>
                     </div>
                 </div>
@@ -29,26 +39,27 @@
                 <div fxLayout="row" fxFelx="100">
                     <mat-icon fxFelx="100" class="icon">schedule</mat-icon>
                 </div>
-                <div fxLayout="row">
-                    <div fxLayout="column">
-                        <h3 class="card-content-h">Actual hours</h3>
-                        <p id="card-content-p" class="">173</p>
-                        <hr class="line">
-                        <p id="card-content-m">last month timesheet</p>
-                    </div>
-                    <div fxLayout="column">
+                <div fxLayout="column">
+                    <div fxLayout="row">
                         <div>
-                            <h3 class="card-content-h">Filled hours</h3>
-                            <p id="card-content-p" fxLayoutAlign="none end">173</p>
-                            <hr class="line">
-                            <p id="card-content-m">173/173</p>
+                            <h3 class="card-content-h">Actual&nbsp;hours</h3>
+                            <p id="card-content-p" class="">173</p>
                         </div>
+                        <div>
+                            <h3 class="card-content-h">Filled&nbsp;hours</h3>
+                            <p id="card-content-p">173</p>
+                        </div>
+                    </div>
+                    <hr class="line">
+                    <div fxLayout="row">
+                        <p id="card-content-m">Currently month timesheet 173/173</p>
                     </div>
                 </div>
             </mat-card>
         </div>
         <div>
-            <div class="graph" fxFlex="50" fxLayout="row"fxLayoutAlign="start start">
+            <div class="graph" fxLayout.lt-sm="column" fxFlex.lt-sm="100" fxLayoutGap.lt-sm="10px" fxFlex="50"
+                fxLayout="row" fxLayoutAlign.lt-st="center start" fxLayoutAlign="start end">
                 <canvas id="myChart"></canvas>
                 <canvas id="myChart-1"></canvas>
             </div>

@@ -27,14 +27,15 @@ export class DashBordComponent implements OnInit {
                 '#ff003d',
                 '#fca452',
               ],
-              borderWidth: 1
+              borderWidth: 1,
+              barPercentage: 0.5
           }]
       },
       options: {
           scales: {
               y: {
                   beginAtZero: true
-              }
+              },
           }
       }
   });
@@ -55,7 +56,8 @@ export class DashBordComponent implements OnInit {
               '#ff003d',
               '#fca452',
             ],
-            borderWidth: 1
+            borderWidth: 1,
+            barPercentage: 0.5
         }]
     },
     options: {
