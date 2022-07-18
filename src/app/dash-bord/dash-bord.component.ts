@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ViewChild, ElementRef } from '@angular/core';
 import Chart, { Title } from 'chart.js/auto';
+import { AuthenticationService } from './authuGaurd/authentication.service';
 
 @Component({
   selector: 'app-dash-bord',
@@ -8,7 +8,7 @@ import Chart, { Title } from 'chart.js/auto';
   styleUrls: ['./dash-bord.component.scss']
 })
 export class DashBordComponent implements OnInit {
-
+  constructor(private Authentication:AuthenticationService){}
   ngOnInit() {
     const myChart = new Chart("myChart", {
       type: 'bar',
@@ -81,6 +81,14 @@ export class DashBordComponent implements OnInit {
 
 });
 
+  }
+  logginStatus(value: string){
+    console.log('Login Fun', value)
+    this.Authentication.loginStatus(value)
+  }
+  logOff(){
+    this.logginStatus('false')
+    localStorage.removeItem('loginStatus');
   }
 }
 
