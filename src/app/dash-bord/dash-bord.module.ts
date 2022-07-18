@@ -4,17 +4,24 @@ import {MatCardModule} from '@angular/material/card';
 import { DashBordRoutingModule } from './dash-bord-routing.module';
 import { DashBordComponent } from './dash-bord.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import {MatIconModule} from '@angular/material/icon'
+import {MatIconModule} from '@angular/material/icon';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list';
+import { AttendanceComponent } from './attendance/attendance.component';
+
 @NgModule({
   declarations: [
-    DashBordComponent
+    DashBordComponent,
+    AttendanceComponent
   ],
   imports: [
     CommonModule,
     DashBordRoutingModule,
     MatCardModule,
     FlexLayoutModule,
-    MatIconModule
+    MatIconModule,
+    MatSidenavModule,
+    MatListModule
   ]
 })
 export class DashBordModule {}

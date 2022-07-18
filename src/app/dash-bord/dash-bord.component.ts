@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewChild, ElementRef } from '@angular/core';
-import Chart from 'chart.js/auto';
+import Chart, { Title } from 'chart.js/auto';
 
 @Component({
   selector: 'app-dash-bord',
@@ -13,7 +13,7 @@ export class DashBordComponent implements OnInit {
     const myChart = new Chart("myChart", {
       type: 'bar',
       data: {
-          labels: ['WorkedHours', 'billable', 'non-billable'],
+          labels: ['Worked-Hours', 'billable-Hours', 'non-billable-Hours'],
           datasets: [{
               label: 'jun month summary',
               data: [171, 90, 81],
@@ -34,7 +34,11 @@ export class DashBordComponent implements OnInit {
       options: {
           scales: {
               y: {
-                  beginAtZero: true
+                  beginAtZero: true,
+                  title: {
+                    display: true,
+                    text: 'Hours'
+                  }
               },
           }
       }
@@ -42,7 +46,7 @@ export class DashBordComponent implements OnInit {
   const myCha = new Chart("myChart-1", {
     type: 'bar',
     data: {
-        labels: ['WorkedHours', 'billable', 'non-billable'],
+        labels: ['Worked-Hours', 'billable-Hours', 'non-billable-Hours'],
         datasets: [{
             label: 'may month Summary',
             data: [181, 110, 71],
@@ -57,17 +61,26 @@ export class DashBordComponent implements OnInit {
               '#fca452',
             ],
             borderWidth: 1,
-            barPercentage: 0.5
+            barPercentage: 0.5,
         }]
     },
+    
     options: {
         scales: {
             y: {
-                beginAtZero: true
-            }
+                beginAtZero: true,
+                title: {
+                  display: true,
+                  text: 'Hours'
+                },
+                
+            },
+            
         }
-    }
+    },
+
 });
+
   }
 }
 

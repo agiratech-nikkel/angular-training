@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MediaChange,MediaObserver } from '@angular/flex-layout';
 import { Subscription } from 'rxjs';
 @Component({
@@ -6,7 +6,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit,OnDestroy {
+export class AppComponent implements OnInit {
   title = 'angular-Training';
   screenSub!:Subscription; 
   constructor(public mediaObserver:MediaObserver)
@@ -16,7 +16,5 @@ export class AppComponent implements OnInit,OnDestroy {
       console.log(result[1].mqAlias)
     })
   }
-  ngOnDestroy(): void {
-    this.screenSub.unsubscribe
-  }
+
 }

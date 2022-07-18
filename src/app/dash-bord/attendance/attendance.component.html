@@ -1,0 +1,99 @@
+<div>
+    <div class="header">
+        <mat-card class="navbar" fxLayout="row">
+            <div fxLayout="row">
+                <mat-icon class="homeIcon" (click)="sidenav.toggle()" fxLayoutAlign="center center">menu</mat-icon>
+                <span class="titel" fxLayoutAlign="center center">Attendance</span>
+            </div>
+            <div fxFlex="100" fxLayoutAlign="end">
+                <img class="img" src="../../assets/1657790548138.png" />
+            </div>
+        </mat-card>
+    </div>
+    <div>
+        <mat-sidenav-container>
+            <mat-sidenav #sidenav>
+                <mat-nav-list>
+                    <a mat-list-item [routerLink]="['/dashBoard']"> DashBoard </a>
+                </mat-nav-list>
+            </mat-sidenav>
+            <mat-sidenav-content>
+
+                <div class="calendar" fxLayoutAlign="center center">
+                    <table class="calendarbox" fxFlex="50" fxFlex.lt-sm="80">
+
+                        <tr>
+                            <th colspan="7">July 2022</th>
+                        </tr>
+
+                        <tr>
+                            <td>Su</td>
+                            <td>Mo</td>
+                            <td>Tu</td>
+                            <td>We</td>
+                            <td>Th</td>
+                            <td>Fr</td>
+                            <td>Sa</td>
+                        </tr>
+
+                        <tr>
+                            <td class="holliDay">1</td>
+                            <td class="workingDay">2</td>
+                            <td class="workingDay">3</td>
+                            <td class="workingDay">4</td>
+                            <td class="workingDay">5</td>
+                            <td class="workingDay">6</td>
+                            <td class="holliDay">7</td>
+                        </tr>
+
+                        <tr>
+                            <td class="holliDay">8</td>
+                            <td class="workingDay">9</td>
+                            <td class="workingDay">10</td>
+                            <td class="workingDay">11</td>
+                            <td class="workingDay">12</td>
+                            <td class="workingDay">13</td>
+                            <td class="holliDay">14</td>
+                        </tr>
+
+                        <tr>
+                            <td class="holliDay">15</td>
+                            <td class="workingDay">16</td>
+                            <td class="workingDay">17</td>
+                            <td class="today">18</td>
+                            <td>19</td>
+                            <td>20</td>
+                            <td class="holliDay">21</td>
+                        </tr>
+
+                        <tr>
+                            <td class="holliDay">22</td>
+                            <td>23</td>
+                            <td>24</td>
+                            <td>25</td>
+                            <td>26</td>
+                            <td>27</td>
+                            <td class="holliDay">28</td>
+                        </tr>
+
+                        <tr>
+                            <td class="holliDay">29</td>
+                            <td>30</td>
+                            <td>31</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+
+                    </table>
+                </div>
+                <div class="gra" fxLayoutAlign="center center">
+                    <div fxFlex="50" fxFlex.lt-sm="80">
+                        <canvas id="myChart-3"></canvas>
+                    </div>
+                </div>
+            </mat-sidenav-content>
+        </mat-sidenav-container>
+    </div>
+</div>

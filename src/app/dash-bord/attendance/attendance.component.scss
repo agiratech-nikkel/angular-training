@@ -49,11 +49,28 @@
         margin: 10px 20px 0px !important;
     }
 
-.graph{
+.gra{
     margin-top: 10px;
     height: inherit;
 }
-
-.skills{
-    height:30vh;
+.calendar{
+    height: 50vh;
+    .calendarbox {
+    border-collapse: collapse;
+    height: inherit;
+    td{
+    border:1px solid black;
+    border-collapse: collapse;
+    }
+    .today{
+        background-color:#416c9b;
+        color: white;
+    }
+    .holliDay{
+        background-color:rgba(255, 140, 140, 0.883);
+    }
+    .workingDay{
+        background-color: rgb(122, 215, 128);
+    }
+    }
 }
