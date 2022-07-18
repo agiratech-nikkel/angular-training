@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import {Router} from '@angular/router';
 @Component({
   selector: 'app-loginpage',
   templateUrl: './loginpage.component.html',
@@ -7,12 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginpageComponent implements OnInit {
   username!:string
-  constructor() { }
+  constructor(private Router:Router) { }
 
   ngOnInit(): void {
   }
   login(){
-      localStorage.setItem('u',this.username)
+      localStorage.setItem('userName',this.username)
       console.log(this.username)
-  }
+      this.Router.navigate(['/dashBoard'])
+    }
 }

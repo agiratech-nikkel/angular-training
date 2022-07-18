@@ -15,8 +15,8 @@ export class DashBordComponent implements OnInit {
       data: {
           labels: ['WorkedHours', 'billable', 'non-billable'],
           datasets: [{
-              label: 'may month summary',
-              data: [10, 5, 5],
+              label: 'jun month summary',
+              data: [171, 90, 81],
               backgroundColor: [
                 '#66ff76',
                 '#ff003d',
@@ -44,8 +44,8 @@ export class DashBordComponent implements OnInit {
     data: {
         labels: ['WorkedHours', 'billable', 'non-billable'],
         datasets: [{
-            label: 'Jun month Summary',
-            data: [10, 6, 4],
+            label: 'may month Summary',
+            data: [181, 110, 71],
             backgroundColor: [
               '#66ff76',
               '#ff003d',

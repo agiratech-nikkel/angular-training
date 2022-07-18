@@ -6,7 +6,11 @@ const routes: Routes = [
   {
     path:'',component:LoginpageComponent
   },
-  { path: 'dashBoard', loadChildren: () => import('./dash-bord/dash-bord.module').then(m => m.DashBordModule) }
+  { 
+  path: 'dashBoard', 
+  loadChildren: () => import('./dash-bord/dash-bord.module').then(m => m.DashBordModule) 
+  },
+  { path: '**', redirectTo:'' },
 ];
 
 @NgModule({
