@@ -1,7 +1,7 @@
 <mat-card class="center-item">
-    <mat-card class="-card" fxLayout="column" fxLayoutAlign="center center">
+    <mat-card class="center-card" fxLayout="column" fxLayoutAlign="center center">
         <h1 class="titel"> Hello there! 👋</h1>
-        <form class="input-form" [formGroup]="loginForm" (ngsubmit)="login()">
+        <form [formGroup]="loginForm" (ngsubmit)="login()">
             <mat-card fxLayoutAlign="center">
                 <img fxLayoutAlign="Start" src="../../assets/1657790548138.png" />
             </mat-card>
@@ -16,9 +16,9 @@
                     <input fxFlex="100" type="password" formControlName="passWord" name="passWord"
                         placeholder="Enter password">
                     <span class="alert" *ngIf="loginForm.controls['passWord'].touched && loginForm.controls['passWord'].invalid">please
-                        enter valid Password</span>
+                        enter valid assword</span>
                 </div>
-                <button fxFlex="100" [disabled]="!loginForm.valid"  type="submit" (click)="login()"
+                <button fxFlex="100" [disabled]="!loginForm.valid" type="submit" (click)="login()"
                     mat-button>Login</button>
             </div>
         </form>
