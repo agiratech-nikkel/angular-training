@@ -7,40 +7,41 @@ body {
 .center-item {
   height: 100vh;
   background-color: #4e5585;
- .center-card{
+ .-card{
     background-color: #4e5585;
     height: inherit;
 }
 .titel{
     color:white;
-}
-  form {
-    padding: 40px;
-    background-color: #fff;
-    border-radius: 10px;
-    input {
-      margin-top: 20px;
-      outline: none;
-      border: none;
-      background-color: #ecf0f1;
-      padding: 10px;
-      font-size: 16px;
-    }
-    img{
-        height: 20vh;
-    }
-    button {
-      background-color: #ff7c88;
-      color: #fff;
-      font-size: 18px;
-      padding: 5px;
-      margin-top: 20px;
-      &:hover {
-        background-color: #afbfff;
+    form {
+      padding: 40px;
+      background-color: #fff;
+      border-radius: 10px;
+      input {
+        margin-top: 20px;
+        outline: none;
+        border: none;
+        background-color: #ecf0f1;
+        padding: 10px;
+        font-size: 16px;
       }
-    }
-    span{
-      color: red;
-    }
-    }
+      img{
+          height: 20vh;
+      }
+      button {
+        background-color: #ff7c88;
+        color: #fff;
+        font-size: 18px;
+        padding: 5px;
+        margin-top: 20px;
+        &:hover {
+          background-color: #afbfff;
+        }
+      }
+      span{
+        color: red;
+      }
+      }
+}
+ 
 }

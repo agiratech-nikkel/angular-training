@@ -1,53 +1,51 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../dash-bord/authuGaurd/authentication.service';
-
+import { enumsobject } from '../enums.ts/enums';
 @Component({
   selector: 'app-loginpage',
   templateUrl: './loginpage.component.html',
   styleUrls: ['./loginpage.component.scss']
 })
 
-export class LoginpageComponent implements OnInit {
+export class LoginpageComponent implements OnInit,AfterViewInit {
 
   username!: string
-  userName: any
+  data: any
   loginForm!: FormGroup
 
-  constructor(private Router: Router, private Authentication: AuthenticationService,private fb:FormBuilder) { }
+  constructor(private router: Router, private authentication: AuthenticationService, private fb: FormBuilder, private storedData: enumsobject) { }
 
   ngOnInit(): void {
-    // this.readData()
-    // console.log(this.userName)
     this.loginForm = this.fb.group({
       userName: new FormControl('', [Validators.required]),
-      passWord: new FormControl('',[Validators.required]),
+      passWord: new FormControl('', [Validators.required]),
     })
-    this.Router.navigate(['/dashBoard'])
     console.log(this.loginForm.controls['userName'])
   }
-
-  logginStatus(value: string) {
-    console.log('Login Fun', value)
-    this.Authentication.loginStatus(value)
+  ngAfterViewInit(): void{
+    if(this.authentication.auth() === true){
+      this.router.navigate(['/dashBoard'])
+      }
   }
 
   readData() {
-    this.userName = window.localStorage.getItem('userName');
+    this.data = localStorage.getItem('loginStatus') ? JSON.parse(localStorage.getItem('loginStatus')!):{}
+    if(this.data.logStatus === 'true'){
+      console.log(this.data.logStatus)
+    }
+  }
+
+  logginStatu(userName: string, logStatus: string) {
+    console.log('Login Fun', userName)
+    this.storedData.loginData(userName, logStatus)
   }
 
   login() {
-    localStorage.setItem('userName', this.loginForm.controls['userName'].value)
+    this.logginStatu(this.loginForm.controls['userName'].value,"true")
     this.readData()
-    console.log(this.username)
-    if (!this.userName) {
-      this.logginStatus('false')
-    } else {
-      this.logginStatus('true')
-    }
-    this.Router.navigate(['/dashBoard'])
-    console.log(this.loginForm.controls['userName'].value)
-
+    console.log(this.authentication.auth())
+    
   }
 }
