@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import Chart, { Title } from 'chart.js/auto';
+import { AuthenticationService } from '../authuGaurd/authentication.service';
 
 @Component({
   selector: 'app-attendance',
@@ -9,7 +10,7 @@ import Chart, { Title } from 'chart.js/auto';
 export class AttendanceComponent implements OnInit {
   selectedDate: any;
 
-  constructor() { }
+  constructor(private Authentication: AuthenticationService) { }
 
   ngOnInit(): void {
     const myChart = new Chart("myChart-3", {
@@ -46,5 +47,13 @@ export class AttendanceComponent implements OnInit {
       }
   });
   }
-
+  logginStatus(value: string) {
+    console.log('Login Fun', value)
+    this.Authentication.loginStatus(value)
+  }
+  logOff() {
+    this.logginStatus('false')
+    localStorage.removeItem('userName');
+    localStorage.removeItem('loginStatus');
+  }
 }

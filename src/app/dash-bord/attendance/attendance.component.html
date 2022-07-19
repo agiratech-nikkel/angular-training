@@ -15,6 +15,7 @@
             <mat-sidenav #sidenav>
                 <mat-nav-list>
                     <a mat-list-item [routerLink]="['/dashBoard']"> DashBoard </a>
+                    <a mat-list-item (click)="logOff()" [routerLink]="''">logoff</a>
                 </mat-nav-list>
             </mat-sidenav>
             <mat-sidenav-content>
@@ -89,7 +90,7 @@
                     </table>
                 </div>
                 <div class="gra" fxLayoutAlign="center center">
-                    <div fxFlex="50" fxFlex.lt-sm="80">
+                    <div fxFlex="50" fxFlex.lt-sm="100">
                         <canvas id="myChart-3"></canvas>
                     </div>
                 </div>

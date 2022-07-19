@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../dash-bord/authuGaurd/authentication.service';
 
@@ -12,13 +13,19 @@ export class LoginpageComponent implements OnInit {
 
   username!: string
   userName: any
+  loginForm!: FormGroup
 
-  constructor(private Router: Router, private Authentication: AuthenticationService) { }
+  constructor(private Router: Router, private Authentication: AuthenticationService,private fb:FormBuilder) { }
 
   ngOnInit(): void {
-    this.readData()
-    console.log(this.userName)
+    // this.readData()
+    // console.log(this.userName)
+    this.loginForm = this.fb.group({
+      userName: new FormControl('', [Validators.required]),
+      passWord: new FormControl('',[Validators.required]),
+    })
     this.Router.navigate(['/dashBoard'])
+    console.log(this.loginForm.controls['userName'])
   }
 
   logginStatus(value: string) {
@@ -31,7 +38,7 @@ export class LoginpageComponent implements OnInit {
   }
 
   login() {
-    localStorage.setItem('userName', this.username)
+    localStorage.setItem('userName', this.loginForm.controls['userName'].value)
     this.readData()
     console.log(this.username)
     if (!this.userName) {
@@ -40,5 +47,7 @@ export class LoginpageComponent implements OnInit {
       this.logginStatus('true')
     }
     this.Router.navigate(['/dashBoard'])
+    console.log(this.loginForm.controls['userName'].value)
+
   }
 }
