@@ -12,7 +12,7 @@ export class AuthenticationService{
 
   auth(): boolean {
     this.data = localStorage.getItem('loginStatus') ? JSON.parse(localStorage.getItem('loginStatus')!):{}
-    if (this.data.logStatus === 'true') {
+    if (this.data.logStatus) {
       this.isAuthenticate = true
       return true
     }else{

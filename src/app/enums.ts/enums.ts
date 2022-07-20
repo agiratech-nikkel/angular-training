@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class enumsobject {
     dat:any
-    loginData(userName:string,logStatus:string) {
+    loginData(userName:string,logStatus:boolean) {
         localStorage.setItem('loginStatus',JSON.stringify({ userName,logStatus}))
       }
 }

@@ -22,7 +22,7 @@ export class LoginpageComponent implements OnInit,AfterViewInit {
       userName: new FormControl('', [Validators.required]),
       passWord: new FormControl('', [Validators.required]),
     })
-    console.log(this.loginForm.controls['userName'])
+    // console.log(this.loginForm.controls['userName'])
   }
   ngAfterViewInit(): void{
     if(this.authentication.auth() === true){
@@ -32,20 +32,17 @@ export class LoginpageComponent implements OnInit,AfterViewInit {
 
   readData() {
     this.data = localStorage.getItem('loginStatus') ? JSON.parse(localStorage.getItem('loginStatus')!):{}
-    if(this.data.logStatus === 'true'){
-      console.log(this.data.logStatus)
-    }
   }
 
-  logginStatu(userName: string, logStatus: string) {
-    console.log('Login Fun', userName)
+  logginStatu(userName: string, logStatus:boolean) {
+    // console.log('Login Fun', userName)
     this.storedData.loginData(userName, logStatus)
   }
 
   login() {
-    this.logginStatu(this.loginForm.controls['userName'].value,"true")
+    this.logginStatu(this.loginForm.controls['userName'].value,true)
     this.readData()
-    console.log(this.authentication.auth())
+    // console.log(this.authentication.auth())
     this.router.navigate(['/dashBoard']) 
   }
 }

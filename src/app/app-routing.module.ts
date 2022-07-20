@@ -4,7 +4,7 @@ import { LoginpageComponent } from './loginpage/loginpage.component';
 import { AuthGuard } from './authuGaurd/auth.guard';
 const routes: Routes = [
   {
-    path: '', component: LoginpageComponent
+    path: '', component: LoginpageComponent,
   },{
     path: 'dashBoard',
     loadChildren: () => import('./dash-bord/dash-bord.module').then(m => m.DashBordModule),

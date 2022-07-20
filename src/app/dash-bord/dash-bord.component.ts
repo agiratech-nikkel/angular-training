@@ -84,13 +84,7 @@ export class DashBordComponent implements OnInit {
     });
 
   }
-  logginStatus(value: string) {
-    console.log('Login Fun', value)
-    // this.Authentication.loginStatus(value)
-  }
   logOff() {
-    this.logginStatus('false')
-    localStorage.removeItem('userName');
     localStorage.removeItem('loginStatus');
   }
 }
