@@ -41,8 +41,8 @@ export class LoginpageComponent implements OnInit,AfterViewInit {
 
   login() {
     this.logginStatu(this.loginForm.controls['userName'].value,true)
-    this.readData()
     // console.log(this.authentication.auth())
     this.router.navigate(['/dashBoard']) 
+    this.readData()
   }
 }

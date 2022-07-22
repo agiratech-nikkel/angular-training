@@ -10,11 +10,13 @@
             </div>
         </mat-card>
     </div>
+
     <div>
         <mat-sidenav-container>
             <mat-sidenav #sidenav>
                 <mat-nav-list>
                     <a mat-list-item [routerLink]="['/dashBoard']"> DashBoard </a>
+                    <a mat-list-item [routerLink]="['/dashBoard/peopel']"> Peopel </a>
                     <a mat-list-item (click)="logOff()" [routerLink]="''">logoff</a>
                 </mat-nav-list>
             </mat-sidenav>

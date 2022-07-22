@@ -2,7 +2,8 @@
     <div class="dashboard__header">
         <mat-card class="dashboard__header_navbar" fxLayout="row">
             <div fxLayout="row">
-                <mat-icon class="dashboard__header_navbar-navicon" (click)="sidenav.toggle()" fxLayoutAlign="center center">menu</mat-icon>
+                <mat-icon class="dashboard__header_navbar-navicon" (click)="sidenav.toggle()"
+                    fxLayoutAlign="center center">menu</mat-icon>
                 <span class="dashboard__header_navbar-titel" fxLayoutAlign="center center">Dashboard</span>
             </div>
             <div fxFlex="100" fxLayoutAlign="end">
@@ -15,15 +16,18 @@
             <mat-sidenav #sidenav>
                 <mat-nav-list>
                     <a mat-list-item [routerLink]="'attendance'"> Attendances </a>
+                    <a mat-list-item [routerLink]="['/dashBoard/peopel']"> Peopel </a>
                     <a mat-list-item (click)="logOff()" [routerLink]="''">logoff</a>
                 </mat-nav-list>
             </mat-sidenav>
-        <mat-sidenav-content>
-                <div class="dashboard__container_card" fxLayout.lt-sm="column" fxLayoutGap.lt-sm="10px" fxLayoutGap.lt-md="2px"
-                    fxLayoutAlign="center end" fxLayoutAlign.lt-sm="start" fxLayoutGap="100px">
-                    <mat-card class="dashboard__container_card-timecard" fxFelx="100" fxLayout="row" fxLayoutAlign="center center">
+            <mat-sidenav-content>
+                <div class="dashboard__container_card" fxLayout.lt-sm="column" fxLayoutGap.lt-sm="10px"
+                    fxLayoutGap.lt-md="2px" fxLayoutAlign="center end" fxLayoutAlign.lt-sm="start" fxLayoutGap="100px">
+                    <mat-card class="dashboard__container_card-timecard" fxFelx="100" fxLayout="row"
+                        fxLayoutAlign="center center">
                         <div fxLayout="row">
-                            <mat-icon class="dashboard__container_card-timecard-icon" fxLayoutAlign="center center">schedule</mat-icon>
+                            <mat-icon class="dashboard__container_card-timecard-icon" fxLayoutAlign="center center">
+                                schedule</mat-icon>
                         </div>
                         <div fxLayout="row">
                             <div fxLayout="column">
@@ -44,9 +48,11 @@
                             </div>
                         </div>
                     </mat-card>
-                    <mat-card class="dashboard__container_card-timecard" fxFelx="100" fxLayout="row" fxLayoutAlign="center center">
+                    <mat-card class="dashboard__container_card-timecard" fxFelx="100" fxLayout="row"
+                        fxLayoutAlign="center center">
                         <div fxLayout="row" fxFelx="100">
-                            <mat-icon fxFelx="100" class="dashboard__container_card-timecard-icon" fxLayoutAlign="center center">schedule</mat-icon>
+                            <mat-icon fxFelx="100" class="dashboard__container_card-timecard-icon"
+                                fxLayoutAlign="center center">schedule</mat-icon>
                         </div>
                         <div fxLayout="column">
                             <div fxLayout="row" fxLayout.lt-sm="column">
@@ -67,12 +73,14 @@
                     </mat-card>
                 </div>
                 <div>
-                    <div class="dashboard__container_graph" fxLayout.lt-sm="column" fxLayout.lt-md="column" fxFlex.lt-sm="100"
-                        fxFlex.lt-md="100" fxLayoutGap.lt-sm="10px" fxFlex="50" fxLayout="row"
+                    <div class="dashboard__container_graph" fxLayout.lt-sm="column" fxLayout.lt-md="column"
+                        fxFlex.lt-sm="100" fxFlex.lt-md="100" fxLayoutGap.lt-sm="10px" fxFlex="50" fxLayout="row"
                         fxLayoutAlign.lt-st="center start" fxLayoutAlign="start end">
                         <canvas id="myChart"></canvas>
                         <canvas id="myChart-1"></canvas>
                     </div>
-        </div>
-    <!-- </div> -->
-<!-- </div> -->
+                </div>
+            </mat-sidenav-content>
+        </mat-sidenav-container>
+    </div>
+</div>
