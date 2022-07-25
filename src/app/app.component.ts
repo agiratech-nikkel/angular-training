@@ -13,7 +13,7 @@ export class AppComponent implements OnInit {
   {}
   ngOnInit(): void {
     this.screenSub  = this.mediaObserver.asObservable().subscribe((result)=>{
-      console.log(result[1].mqAlias)
+      // console.log(result[1].mqAlias)
     })
   }
 

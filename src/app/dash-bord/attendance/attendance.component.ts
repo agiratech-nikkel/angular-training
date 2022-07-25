@@ -47,13 +47,11 @@ export class AttendanceComponent implements OnInit {
       }
   });
   }
-  logginStatus(value: string) {
-    console.log('Login Fun', value)
-    this.Authentication.loginStatus(value)
-  }
+  // data:any
+  // readData() {
+  //   this.data = localStorage.getItem('loginStatus') ? JSON.parse(localStorage.getItem('loginStatus')!):{}
+  // }
   logOff() {
-    this.logginStatus('false')
-    localStorage.removeItem('userName');
     localStorage.removeItem('loginStatus');
   }
 }

@@ -14,11 +14,14 @@ body {
 .titel{
     color:white;
 }
-  form {
+.card-img{
+  height: 20vh;
+}
+  .form-Field {
     padding: 40px;
     background-color: #fff;
     border-radius: 10px;
-    input {
+    .input-box {
       margin-top: 20px;
       outline: none;
       border: none;
@@ -26,10 +29,7 @@ body {
       padding: 10px;
       font-size: 16px;
     }
-    img{
-        height: 20vh;
-    }
-    button {
+    .submit {
       background-color: #ff7c88;
       color: #fff;
       font-size: 18px;
@@ -39,7 +39,7 @@ body {
         background-color: #afbfff;
       }
     }
-    span{
+    .alert{
       color: red;
     }
     }

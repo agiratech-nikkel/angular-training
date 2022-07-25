@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import Chart, { Title } from 'chart.js/auto';
 import { AuthenticationService } from './authuGaurd/authentication.service';
-
 @Component({
   selector: 'app-dash-bord',
   templateUrl: './dash-bord.component.html',
@@ -85,13 +84,7 @@ export class DashBordComponent implements OnInit {
     });
 
   }
-  logginStatus(value: string) {
-    console.log('Login Fun', value)
-    this.Authentication.loginStatus(value)
-  }
   logOff() {
-    this.logginStatus('false')
-    localStorage.removeItem('userName');
     localStorage.removeItem('loginStatus');
   }
 }

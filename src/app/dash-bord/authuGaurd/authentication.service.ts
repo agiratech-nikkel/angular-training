@@ -1,28 +1,23 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, Router } from '@angular/router';
-
+import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
 
-export class AuthenticationService {
+export class AuthenticationService{
 
-  login: any
-  
-  constructor(private router: Router) { }
-  
-  loginStatus(value: string) {
-    localStorage.setItem('loginStatus', value)
-  }
-  
-  canActivate(): boolean {
-    this.login = window.localStorage.getItem('loginStatus') ? JSON.parse(localStorage.getItem('loginStatus')!) : Boolean
-    console.log(this.login)
-    if (this.login === true) {
+  data:any
+  isAuthenticate = false;
+  constructor(private router:Router) { }
+
+  auth(): boolean {
+    this.data = localStorage.getItem('loginStatus') ? JSON.parse(localStorage.getItem('loginStatus')!):{}
+    if (this.data.logStatus) {
+      this.isAuthenticate = true
       return true
-    } else {
-      this.router.navigate([''])
+    }else{
+     this.isAuthenticate = false
+    return false
     }
-    return false;
   }
 }
