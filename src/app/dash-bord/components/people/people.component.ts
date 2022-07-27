@@ -1,12 +1,10 @@
 import { Component, OnInit,AfterViewInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import {MatSort} from '@angular/material/sort';
-import { enumsobject } from 'src/app/enums.ts/enums';
+import { emplyeedata } from 'src/app/enums.ts/employee.enums';
 import { MatPaginator } from '@angular/material/paginator';
-import {LiveAnnouncer} from '@angular/cdk/a11y';
 import { FormControl } from '@angular/forms';
-import { Observable } from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-people',
@@ -17,39 +15,75 @@ export class PeopleComponent implements OnInit,AfterViewInit{
 
   search!:string
   search1!:string
-  
+  dat!:any
   myControl = new FormControl('');
   myControl2 = new FormControl('');
-  options: string[] = ['Male', 'Female'];
-  options2: string[] = ['developer', 'testing','Admin'];
-  filteredOptions!: Observable<string[]>;
-  filteredOptions2!: Observable<string[]>;
+  filteredOptions =  Observable<string[]>;
+  filteredOptions2 =  Observable<string[]>;
+  dataSource = new MatTableDataSource<any>;
+  
+  checks = false
+  displayNoRecords=false
+  options = [{key: "Male", id:'Male'},{key: 'Female', id:'Female'}];
+  options2 = [{key:'Developer',id:'Developer'},{key:'DevOps',id:'DevOps'}, {key:"Testing",id:"Testing"},{key:"Admin",id:"Admin"}];
   displayedColumns  = ['select','no', 'name', 'lastname','email','hiredate','phonenumber','salary'];
   displayedColumns2  = ['select1','no1', 'name1', 'lastname1','email1','hiredate1', 'phonenumber1','salary1'];
-  dataSource = new MatTableDataSource<any>(this.data.Emplyeedata);
 
-  constructor(private data:enumsobject,private _liveAnnouncer: LiveAnnouncer) { }
+  constructor(private data:emplyeedata) { }
 
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;  
   @ViewChild(MatSort) sort!: MatSort;
 
+  getEmpData():Observable<any>{
+    return of(this.data.Emplyeedata) 
+  }
+  getEmpList(){
+    this.getEmpData().subscribe({
+      next:(responce) =>{
+        this.dataSource.data = responce
+      }
+    }) 
+  }
+  ngOnInit(): void {
+    this.getEmpList()
+  }
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-  }
-  ngOnInit(): void {
-  }
-
+  }  
   logOff() {
     localStorage.removeItem('loginStatus');
   }
   filter(){
     this.dataSource.filter = this.search.trim().toLowerCase()
+    if(this.dataSource.filteredData.length==0){
+      this.displayNoRecords=true;
+    }else{
+      this.displayNoRecords=false;
+   
+    }
   }
   filter1(){
     this.dataSource.filter = this.search1.trim().toLowerCase()
+    if(this.dataSource.filteredData.length==0){
+      this.displayNoRecords=true;
+    }else{
+      this.displayNoRecords=false;
+   
+    }
   }
-  op(value:any){
-    this.dataSource.filter = value.trim().toLowerCase()
+  op(value:string){
+    this.dataSource.filter = value.trim().toLowerCase();
+   console.log( value ==this.dataSource.filter)   
+    console.log(this.dataSource.filter)
+    console.log(value)
   }
+  selectAll(e:any){
+    if(e == true){
+      this.checks = true
+    }else {
+      this.checks = false
+    }
+  }
+
 }

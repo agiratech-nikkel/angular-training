@@ -1,26 +1,25 @@
 ::ng-deep app-people{
-.peopel__header{
+.peopel-header{
     font-size: 20px;
-    .peopel__header_navbar{
+    &__navbar{
         background-color: #3a87bf;
         color:white ;
-        // margin-left: 2px;
-        .peopel__header_navbar-navicon{
+        &--navicon{
             font-size:25px;
             height: inherit;
             cursor: pointer;
         }
-        .peopel__header_navbar-titel{
+        &--titel{
             margin-left: 5px
         }
-        .peopel__header_navbar-img{
+        &--img{
             height: 5vh;
             cursor: pointer;
         }
     }
 
 }
-.peopel__tabel{
+.peopel-tabel{
     padding: 50px 50px 0px;
     .mat-header-cell {
         background: #37acf6;
@@ -33,11 +32,16 @@
     .mat-row:nth-child(odd){
         background-color: #f6f6f6;
     }
-    .peopel__tabel_container-dropDown{
-        background-color: #3a99f0;
-        color: rgba(0, 0, 0, 0.676);
-        border-color: rgba(0, 0, 0, 0.676);
-        border-radius: 5px; 
+    &__errorMessage{
+        color: gray;
+        padding-top: 20px;
+        font-size: 20px
+    }
+    &__data{
+        cursor: pointer
+    }
+    &__data:hover{
+        color: #3a87bf
     }
 };
 }

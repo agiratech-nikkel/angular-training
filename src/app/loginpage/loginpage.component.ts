@@ -2,7 +2,7 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../dash-bord/authuGaurd/authentication.service';
-import { enumsobject } from '../enums.ts/enums';
+import { enumsobject } from '../enums.ts/login.enums';
 @Component({
   selector: 'app-loginpage',
   templateUrl: './loginpage.component.html',
