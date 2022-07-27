@@ -13,12 +13,15 @@ import {MatInputModule} from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatSelectModule} from '@angular/material/select';
-
+import { ProfileComponent } from './components/profile/profile/profile.component';
+import { AgePipe } from '../pipes/age.pipe';
 @NgModule({
   declarations: [
     DashBordComponent,
     AttendanceComponent,
     PeopleComponent,
+    ProfileComponent,
+    AgePipe
     ],
   imports: [
     CommonModule,
@@ -31,7 +34,7 @@ import {MatSelectModule} from '@angular/material/select';
     MatInputModule,
     FormsModule,
     MatAutocompleteModule,
-    MatSelectModule
+    MatSelectModule,
   ]
 })
 export class DashBordModule {}

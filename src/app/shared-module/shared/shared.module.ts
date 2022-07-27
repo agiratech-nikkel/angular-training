@@ -17,7 +17,8 @@ const modules=[ FlexLayoutModule,
   ReactiveFormsModule]
 
   @NgModule({
-  declarations: [],
+  declarations: [
+  ],
   imports: [
     CommonModule,
     modules,
