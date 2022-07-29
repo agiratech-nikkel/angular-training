@@ -1,0 +1,40 @@
+.edit-page{
+    background-color:#f7f7f7;
+    height: 75vh;
+    &__profile{
+        background-color:#ffffff;
+        border-radius: 10px;
+        &-photo{
+            border-radius: 50%;
+            width: 130px;
+            height: 150px;
+        }
+        &-name{
+            color: #3d4158;
+            font-size: 20px;
+            margin-top: 10px;
+        }
+        &-details{
+            color: #818cb2
+        }
+        &-heading{
+            color: #818cb2
+        }
+        &-line1{
+            margin-left: 5px;
+            width: 47%;
+        }
+        &-line2{
+            margin-left: 5px;
+            width: 67%;
+        }
+        
+        &-line3{
+            margin-left: 5px;
+            width: 40%;
+        }
+    }
+    &__sub-btn{
+        background: greenyellow;
+    }
+}

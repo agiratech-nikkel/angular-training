@@ -80,7 +80,7 @@
                             <p *ngIf="emplyeelist[0].lastproject">Last Project</p>
                         </div>
                         <div fxLayout="column">
-                            <p>{{x.dob}}</p>
+                            <p>{{x.dob|date: 'dd/MM/yyyy'}}</p>
                             <p>{{x.dob|age}}</p>
                             <p>{{x.Expericnce}}</p>
                             <p>{{x.salary}}</p>
@@ -95,7 +95,7 @@
                 </div>
             </div>
             <div fxLayoutAlign.lt-sm="center" >
-            <button mat-button>
+            <button mat-button (click)="onEdit()">
                 <mat-icon>create</mat-icon>
             </button>
             </div>
