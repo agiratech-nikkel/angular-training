@@ -536,6 +536,8 @@ export class EmplyeedataService {
     return of(this.Emplyeedata) 
   }
   getUpdateData(upData:any){
-   return this.em = upData
+   return  upData
   }
+
+
 }

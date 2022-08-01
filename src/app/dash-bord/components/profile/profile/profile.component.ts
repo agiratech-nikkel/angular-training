@@ -16,10 +16,10 @@ import { EditComponent } from '../../edit/edit.component';
 export class ProfileComponent implements OnInit {
   emplyeeId:any
   emplyeelist:any
+  dat!:[]
 
   constructor(
     private router:ActivatedRoute,
-    private emplyeedata:EmplyeedataService,
     public dialog:MatDialog
     ) { }
   
@@ -27,17 +27,14 @@ export class ProfileComponent implements OnInit {
     this.emplyeeId = this.router.snapshot.params
     this.getEmpData()
   }
-  getEmpList(){
-    this.emplyeedata.getEmpData().subscribe(
-    data => this.emplyeedata = data
-    )
-  }
   getEmpData(){
-    this.emplyeelist = this.emplyeedata.Emplyeedata.filter( emp => emp.id == this.emplyeeId.id)   
+    this.dat = localStorage.getItem('EmpolyeeData') ? JSON.parse(localStorage.getItem('EmpolyeeData')!):{}
+    this.emplyeelist = this.dat.filter( (d: { id: number; }) => d.id == this.emplyeeId.id)  
   }
   onEdit(){
     const dialogconfig = new MatDialogConfig();
-    dialogconfig.width = "50%";
-    this.dialog.open(EditComponent,{data:this.emplyeelist})
+    dialogconfig.width = "70%";
+    dialogconfig.autoFocus = true
+    this.dialog.open(EditComponent,{data:this.emplyeelist,disableClose:true})
   }
 }

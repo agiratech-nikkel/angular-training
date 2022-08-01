@@ -15,7 +15,7 @@ export class PeopleComponent implements OnInit,AfterViewInit{
 
   search!:string
   search1!:string
-  dat!:any
+  dat!:[]
   myControl = new FormControl('');
   myControl2 = new FormControl('');
   filteredOptions =  Observable<string[]>;
@@ -41,6 +41,9 @@ export class PeopleComponent implements OnInit,AfterViewInit{
   }
   ngOnInit(): void {
     this.getEmpList()
+    // localStorage.setItem('EmpolyeeData',JSON.stringify(this.dataSource.data))
+    this.dat = localStorage.getItem('EmpolyeeData') ? JSON.parse(localStorage.getItem('EmpolyeeData')!):[]
+    this.dataSource.data =this.dat
   }
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;

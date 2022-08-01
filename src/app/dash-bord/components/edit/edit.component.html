@@ -1,128 +1,158 @@
 <div class="edit-page">
-    <div fxLayoutAlign="center">
-        <div fxFelx="100" *ngFor="let x of data" fxLayout="column" fxLayoutGap="30px" fxLayoutGap.lt-sm="0px"
-            class="edit-page__profile" fxLayoutAlign="center">
-            <div>
-            </div>
-            <div fxLayout="row" fxLayoutAlign="center">
-                <img class="edit-page__profile-photo" src="{{x.image}}">
-            </div>
-            <form [formGroup]="editForm" (ngsubmit)="editSubmit()">
-                <div class="data">
-                    <div fxLayoutAlign="center">
-                        <div fxLayoutAlign="center" fxLayout="column">
+    <div fxFelx="100" *ngFor="let x of data" fxLayout="column" fxLayoutGap="30px" fxLayoutGap.lt-sm="0px"
+        class="edit-page__form" fxLayoutAlign="center">
+        <div fxLayout="row" fxLayoutAlign="center">
+            <img class="edit-page__form-photo" src="{{x.image}}">
+        </div>
+        <form [formGroup]="editForm" (ngsubmit)="editSubmit()">
+            <div class="edit-page__form--field">
+                <div fxLayoutAlign="center">
+                    <div fxLayoutAlign="center" fxLayoutGap="20px" fxLayout="row" fxLayout.lt-sm="column">
+                        <div class="edit-page__form--field_Name">
                             <mat-form-field class="example-full-width" appearance="fill">
-                                <mat-label>Edit Name</mat-label>
-                                <input matInput placeholder="Enter you Name" formControlName="name" >
+                                <mat-label>Frist Name</mat-label>
+                                <input matInput placeholder="Enter Frist Name" formControlName="name">
                             </mat-form-field>
+                        </div>
+                        <div class="edit-page__form--field_lastName">
                             <mat-form-field class="example-full-width" appearance="fill">
-                                <mat-label>Edit Last Name</mat-label>
-                                <input matInput placeholder="Enter you Last Name"  formControlName="lastName" >
-                            </mat-form-field>
-                            <mat-form-field class="example-full-width" appearance="fill">
-                                <mat-label>Edit ID</mat-label>
-                                <input matInput placeholder="Enter you Last Name" formControlName="id" >
+                                <mat-label> Last Name</mat-label>
+                                <input matInput placeholder="Enter Last Name" formControlName="lastName">
                             </mat-form-field>
                         </div>
                     </div>
+                </div>
+                <div fxLayoutAlign="center">
                     <div>
                         <div class="edit-page__profile-heading" fxLayout="row">
                             <div>
                                 <p>CONTACT DETAILS</p>
                             </div>
-                            <div class="edit-page__profile-line1">
-                                <hr>
-                            </div>
                         </div>
-                        <div fxLayout="row" fxLayoutGap="100px">
-                            <div class="edit-page__profile-details" fxLayoutAlign="center start" fxLayout="column">
-                                <p>Mobile </p>
-                                <p>E-mail </p>
+                        <div fxLayoutAlign="center" fxLayout="row" fxLayoutGap="20px" fxLayout.lt-sm="column">
+                            <div class="edit-page__form--field_phoneNumber">
+                                <mat-form-field class="example-full-width" appearance="fill">
+                                    <mat-label>phone Number</mat-label>
+                                    <input matInput placeholder="Enter Last Name" formControlName="phoneNumber">
+                                </mat-form-field>
                             </div>
-                            <div fxLayout="column">
-                                <p><input  placeholder="Edit Phone Number" formControlName="phoneNumber" ></p>
-                                <p><input placeholder="Edit Email Id" formControlName="email"></p>
+                            <div>
+                                <mat-form-field class="edit-page__form--field_phoneNumber" appearance="fill">
+                                    <mat-label>phone Number</mat-label>
+                                    <input matInput placeholder="Enter Last Name" formControlName="email">
+                                </mat-form-field>
                             </div>
                         </div>
                     </div>
+                </div>
+                <div fxLayoutAlign="center">
                     <div>
                         <div class="edit-page__profile-heading" fxLayout="row">
                             <div>
                                 <p>CATEGORY</p>
                             </div>
-                            <div class="edit-page__profile-line2">
-                                <hr>
-                            </div>
                         </div>
-                        <div fxLayout="row" fxLayoutGap="100px">
-                            <div class="edit-page__profile-details" fxLayout="column" fxLayoutAlign="center start"
-                                fxLayout="column">
-                                <p>Department</p>
-                                <p>Division</p>
-                            </div>
-                            <div fxLayout="column">
-                                <p>
-                                    <select matNativeControl required formControlName="deprtment">
-                                        <option  *ngFor="let op of deprtment" [value]="op.value">{{op.key}}
-                                        </option>
-                                    </select>
-                                </p>
-                                <p>
-                                    <select matNativeControl required formControlName="division" >
-                                        <option *ngFor="let op of division" [value]="op.value">{{op.key}}
-                                        </option>
-                                    </select>
-                                </p>
-                            </div>
-
+                        <div fxLayout="row" fxLayou.lt-sm="column" fxLayoutGap="20px">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Department</mat-label>
+                                <mat-select formControlName="deprtment" required>
+                                    <mat-option>--</mat-option>
+                                    <mat-option *ngFor="let op of deprtment" [value]="op.value">
+                                        {{op.key}}
+                                    </mat-option>
+                                </mat-select>
+                                <!-- <mat-error *ngIf="animalControl.hasError('required')">Please choose an animal</mat-error> -->
+                                <!-- <mat-hint>{{animalControl.value?.sound}}</mat-hint> -->
+                            </mat-form-field>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Division</mat-label>
+                                <mat-select formControlName="division" required>
+                                    <mat-option>--</mat-option>
+                                    <mat-option *ngFor="let op of division" [value]="op.value">
+                                        {{op.key}}
+                                    </mat-option>
+                                </mat-select>
+                                <!-- <mat-error *ngIf="animalControl.hasError('required')">Please choose an animal</mat-error> -->
+                                <!-- <mat-hint>{{animalControl.value?.sound}}</mat-hint> -->
+                            </mat-form-field>
                         </div>
                     </div>
-                    <div>
-                        <div class="edit-page__profile-heading" fxLayout="row">
-                            <div>
-                                <p>OTHER INFORMATION</p>
-                            </div>
-                            <div class="edit-page__profile-line3">
-                                <hr>
-                            </div>
+                </div>
+                <div>
+                    <div class="edit-page__profile-heading" fxLayout="row">
+                        <div>
+                            <p>OTHER INFORMATION</p>
                         </div>
-                        <div fxLayout="row" fxLayoutGap="100px">
-                            <div class="edit-page__profile-details" fxLayoutAlign="center start" fxLayout="column">
-                                <p>Date of Birth</p>
-                                <p>Expericnce</p>
-                                <p>Genders</p>
-                                <p>Performance</p>
-                                <p>Last Project</p>
-                            </div>
-                            <div fxLayout="column">
-                                <div>
-                                    <input [matDatepicker]="picker" formControlName="dob">
+                        <div class="edit-page__profile-line3">
+                            <hr>
+                        </div>
+                    </div>
+                    <div fxLayout="row" fxLayoutGap="100px">
+                        <!-- <div class="edit-page__profile-details" fxLayoutAlign="center start" fxLayout="column">
+                            <p>Date of Birth</p>
+                            <p>Expericnce</p>
+                            <p>Genders</p>
+                            <p>Performance</p>
+                            <p>Last Project</p>
+                        </div> -->
+                        <div fxLayout="column">
+                            <div fxLayout="row" fxLayoutGap="20px">
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Choose a date</mat-label>
+                                    <input matInput [matDatepicker]="picker" formControlName="dob">
+                                    <mat-hint>MM/DD/YYYY</mat-hint>
                                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                                     <mat-datepicker [startAt]="x.dob" #picker></mat-datepicker>
-                                </div>
-                                <p><input placeholder="Edit Phone Number"  formControlName="expericnce"></p>
-                                <p><select matNativeControl required formControlName="gender">
-                                    <option *ngFor="let op of gender" [value]="op.value">{{op.key}}
-                                    </option>
-                                </select></p>
-                                <p><select matNativeControl required formControlName="rating">
-                                    <!-- <option>{{x.rateing}}</option> -->
-                                    <option *ngFor="let op of rating" [value]="op.value">{{op.key}}
-                                    </option>
-                                </select></p> 
-                                <p><select matNativeControl required formControlName="lastProject">
-                                    <!-- <option>Project&nbsp;{{x.lastproject}}</option> -->
-                                    <option *ngFor="let op of lastProject" [value]="op.value">Project&nbsp;{{op.key}}
-                                    </option>
-                                </select></p>
+                                </mat-form-field>
+                                <mat-form-field class="edit-page__form--field_expricnce" appearance="fill">
+                                    <mat-label>Experiance</mat-label>
+                                    <input matInput placeholder="Enter Last Name" formControlName="expericnce">
+                                </mat-form-field>
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Genders</mat-label>
+                                    <mat-select formControlName="gender" required>
+                                        <mat-option>--</mat-option>
+                                        <mat-option *ngFor="let op of gender" [value]="op.value">
+                                            {{op.key}}
+                                        </mat-option>
+                                    </mat-select>
+                                    <!-- <mat-error *ngIf="animalControl.hasError('required')">Please choose an animal</mat-error> -->
+                                    <!-- <mat-hint>{{animalControl.value?.sound}}</mat-hint> -->
+                                </mat-form-field>
+                            </div>
+                            <div fxLayoutAlign="center" fxLayout="row" fxLayoutGap="20px">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Rating</mat-label>
+                                        <mat-select formControlName="rating" required>
+                                            <mat-option>--</mat-option>
+                                            <mat-option *ngFor="let op of rating" [value]="op.value">
+                                                {{op.key}}
+                                            </mat-option>
+                                        </mat-select>
+                                        <!-- <mat-error *ngIf="animalControl.hasError('required')">Please choose an animal</mat-error> -->
+                                        <!-- <mat-hint>{{animalControl.value?.sound}}</mat-hint> -->
+                                    </mat-form-field>
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Last Project</mat-label>
+                                        <mat-select formControlName="lastProject" required>
+                                            <mat-option>--</mat-option>
+                                            <mat-option *ngFor="let op of lastProject" [value]="op.value">
+                                                {{op.key}}
+                                            </mat-option>
+                                        </mat-select>
+                                        <!-- <mat-error *ngIf="animalControl.hasError('required')">Please choose an animal</mat-error> -->
+                                        <!-- <mat-hint>{{animalControl.value?.sound}}</mat-hint> -->
+                                    </mat-form-field>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div fxLayoutAlign="center" color="warn">
-                    <button [disabled]="!editForm.valid" class="edit-page__sub-btn"type="submit" mat-button fxFlex="100" (click)="editSubmit()">Save</button>
-                </div>
-            </form> 
-        </div>
+            </div>
+            <div fxLayoutAlign="center" color="warn"   fxLayoutGap="20px">
+                <button [disabled]="!editForm.valid" class="edit-page__sub-btn" type="submit" mat-button 
+                    (click)="editSubmit()">Save</button>   
+                <button  class="edit-page__cal-btn"   mat-button (click)="cancelSubmit()"  >Cancel</button>
+            </div>
+        </form>
     </div>
 </div>

@@ -1,7 +1,7 @@
 import { Component, Inject, Injectable, OnInit } from '@angular/core';
 import { FormGroup,FormBuilder, FormControl, Validators } from '@angular/forms';
 import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { Observable, of } from 'rxjs';
+import { Router } from '@angular/router';
 import { EmplyeedataService } from 'src/app/provider/emplyeedata.service';
 
 @Injectable({
@@ -15,8 +15,9 @@ import { EmplyeedataService } from 'src/app/provider/emplyeedata.service';
 export class EditComponent implements OnInit {
 
   editForm!:FormGroup
-  emplyeelist!:{}
-  empUpdate!:any
+  // emplyeelist!:{}  
+  empUpdate:any
+  dat!:any
 
 
   deprtment = [{key:"Development",value:"Development"},{key:"Testing",value:"testing"},{key:"Management",value:"Management"}]
@@ -29,6 +30,7 @@ export class EditComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     private fb:FormBuilder,
     private emplyeeData:EmplyeedataService,
+    private router: Router, 
     public dialogRef: MatDialogRef<EditComponent>
   ) {
    }
@@ -48,26 +50,30 @@ export class EditComponent implements OnInit {
       gender: new FormControl (this.data[0].salary,[Validators.required]),    
       rating: new FormControl (this.data[0].rateing,[Validators.required]),    
       lastProject: new FormControl (this.data[0].lastproject,[Validators.required]),    
-    }) 
+    })  
   }
 
   editSubmit(){
-      this.empUpdate = this.data
-      this.empUpdate[0].lastname = this.editForm.controls['lastName'].value
-      this.empUpdate[0].name = this.editForm.controls['name'].value
-      this.empUpdate[0].id= this.editForm.controls['id'].value
-      this.empUpdate[0].phonenumber= this.editForm.controls['phoneNumber'].value
-      this.empUpdate[0].email = this.editForm.controls['email'].value
-      this.empUpdate[0].Department = this.editForm.controls['deprtment'].value
-      this.empUpdate[0].division = this.editForm.controls['division'].value
-      this.empUpdate[0].dob = this.editForm.controls['dob'].value
-      this.empUpdate[0].Expericnce = this.editForm.controls['expericnce'].value
-      this.empUpdate[0].salary= this.editForm.controls['gender'].value
-      this.empUpdate[0].rateing = this.editForm.controls['rating'].value
-      this.empUpdate[0].lastproject = this.editForm.controls['lastProject'].value
-      console.log(this.emplyeeData.getUpdateData(this.empUpdate))
-      this.dialogRef.close();
-      return of (this.emplyeeData.getUpdateData(this.empUpdate))
+    this.empUpdate = JSON.parse(localStorage.getItem('EmpolyeeData')!)
+    this.dat = this.empUpdate.findIndex((d:any) => {return  d.id == this.data[0].id})
+      this.empUpdate[this.dat].lastname = this.editForm.controls['lastName'].value
+      this.empUpdate[this.dat].name = this.editForm.controls['name'].value
+      this.empUpdate[this.dat].id= this.editForm.controls['id'].value
+      this.empUpdate[this.dat].phonenumber= this.editForm.controls['phoneNumber'].value
+      this.empUpdate[this.dat].email = this.editForm.controls['email'].value
+      this.empUpdate[this.dat].Department = this.editForm.controls['deprtment'].value
+      this.empUpdate[this.dat].division = this.editForm.controls['division'].value
+      this.empUpdate[this.dat].dob = this.editForm.controls['dob'].value
+      this.empUpdate[this.dat].Expericnce = this.editForm.controls['expericnce'].value
+      this.empUpdate[this.dat].salary= this.editForm.controls['gender'].value
+      this.empUpdate[this.dat].rateing = this.editForm.controls['rating'].value
+      this.empUpdate[this.dat].lastproject = this.editForm.controls['lastProject'].value
+      localStorage.setItem('EmpolyeeData', JSON.stringify(this.empUpdate))
+    this.dialogRef.close();
+      this.router.navigate(['/dashBoard/peopel']) 
+  }
+  cancelSubmit(){
+    this.dialogRef.close();
   }
 }
 

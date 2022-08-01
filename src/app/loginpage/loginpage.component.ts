@@ -15,7 +15,7 @@ export class LoginpageComponent implements OnInit,AfterViewInit {
   data: any
   loginForm!: FormGroup
 
-  constructor(private router: Router, private authentication: AuthenticationService, private fb: FormBuilder, private storedData: enumsobject) { }
+  constructor(private router: Router,private authentication: AuthenticationService, private fb: FormBuilder, private storedData: enumsobject) { }
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
