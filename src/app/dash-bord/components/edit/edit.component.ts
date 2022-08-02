@@ -17,7 +17,7 @@ export class EditComponent implements OnInit {
   editForm!:FormGroup
   // emplyeelist!:{}  
   empUpdate:any
-  dat!:any
+  dat!:number
 
 
   deprtment = [{key:"Development",value:"Development"},{key:"Testing",value:"testing"},{key:"Management",value:"Management"}]
@@ -70,7 +70,7 @@ export class EditComponent implements OnInit {
       this.empUpdate[this.dat].lastproject = this.editForm.controls['lastProject'].value
       localStorage.setItem('EmpolyeeData', JSON.stringify(this.empUpdate))
     this.dialogRef.close();
-      this.router.navigate(['/dashBoard/peopel']) 
+    this.router.navigate(['/dashBoard/peopel']) 
   }
   cancelSubmit(){
     this.dialogRef.close();

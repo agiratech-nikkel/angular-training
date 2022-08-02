@@ -3,8 +3,10 @@ import { MatTableDataSource } from '@angular/material/table';
 import {MatSort} from '@angular/material/sort';
 import { EmplyeedataService } from 'src/app/provider/emplyeedata.service';
 import { MatPaginator } from '@angular/material/paginator';
-import { FormControl } from '@angular/forms';
-import { Observable, of } from 'rxjs';
+import { Router } from '@angular/router';
+import { Observable, sample } from 'rxjs';
+import { FormGroup,FormBuilder, FormControl, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-people',
@@ -15,21 +17,30 @@ export class PeopleComponent implements OnInit,AfterViewInit{
 
   search!:string
   search1!:string
+  name!:string
   dat!:[]
   myControl = new FormControl('');
   myControl2 = new FormControl('');
   filteredOptions =  Observable<string[]>;
   filteredOptions2 =  Observable<string[]>;
   dataSource = new MatTableDataSource<any>;
-  
+  onEditing = false
+  empUpdate:any
+  datas!:number
+
   checks = false
   displayNoRecords=false
   options = [{key: "Male", id:'Male'},{key: 'Female', id:'Female'}];
   options2 = [{key:'Developer',id:'Developer'},{key:'DevOps',id:'DevOps'}, {key:"Testing",id:"Testing"},{key:"Admin",id:"Admin"}];
-  displayedColumns  = ['select','no', 'name', 'lastname','email','hiredate','phonenumber','salary'];
-  displayedColumns2  = ['select1','no1', 'name1', 'lastname1','email1','hiredate1', 'phonenumber1','salary1'];
+  options3 = [{key:'Development',id:'Development'},{key:'Management',id:'Management'}];
+  displayedColumns  = ['select','no', 'name', 'lastname','email','hiredate','phonenumber','salary',];
+  displayedColumns2  = ['select1','no1', 'name1', 'lastname1','email1','hiredate1', 'phonenumber1','salary1',];
 
-  constructor(private data:EmplyeedataService) { }
+  constructor(
+    private data:EmplyeedataService,
+    private router:Router,
+    private fb:FormBuilder
+    ) { }
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;  
   @ViewChild(MatSort) sort!: MatSort;
@@ -41,9 +52,9 @@ export class PeopleComponent implements OnInit,AfterViewInit{
   }
   ngOnInit(): void {
     this.getEmpList()
-    // localStorage.setItem('EmpolyeeData',JSON.stringify(this.dataSource.data))
     this.dat = localStorage.getItem('EmpolyeeData') ? JSON.parse(localStorage.getItem('EmpolyeeData')!):[]
     this.dataSource.data =this.dat
+    
   }
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
@@ -81,4 +92,34 @@ export class PeopleComponent implements OnInit,AfterViewInit{
     }
   }
 
+  onEdit(element:any){
+    this.onEditing = false
+    console.log(element.id)
+    element.isEdit= false
+    this.empUpdate = JSON.parse(localStorage.getItem('EmpolyeeData')!)
+    this.datas = this.empUpdate.findIndex((d:any) => {return  d.id == element.id})
+    console.log(this.empUpdate)
+      this.empUpdate[this.datas].name = element.name
+      this.empUpdate[this.datas].lastname= element.lastname
+      this.empUpdate[this.datas].phonenumber= element.phonenumber
+      this.empUpdate[this.datas].email = element.email
+      this.empUpdate[this.datas].hiredate = element.hiredate
+      this.empUpdate[this.datas].salary = element.salary
+      localStorage.setItem('EmpolyeeData', JSON.stringify(this.empUpdate))  
+  }
+  onSave(element:any){
+    this.onEditing = true
+    element.isEdit= true
+    console.log(element)
+   
+  }
+  onRoute(element:any){
+    this.router.navigate(['/dashBoard/profile',element.id])
+  }
 }
+
+    
+    //   this.empUpdate[this.datas].Expericnce = this.editForm.controls['expericnce'].value
+    //   this.empUpdate[this.datas].salary= this.editForm.controls['gender'].value
+    //   this.empUpdate[this.datas].rateing = this.editForm.controls['rating'].value
+    //   this.empUpdate[this.datas].lastproject = this.editForm.controls['lastProject'].value

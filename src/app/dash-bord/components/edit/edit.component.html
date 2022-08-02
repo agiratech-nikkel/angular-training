@@ -22,7 +22,7 @@
                         </div>
                     </div>
                 </div>
-                <div fxLayoutAlign="center">
+                <div fxLayoutAlign="center" fxLayoutAlign.lt-sm="start">
                     <div>
                         <div class="edit-page__profile-heading" fxLayout="row">
                             <div>
@@ -45,14 +45,14 @@
                         </div>
                     </div>
                 </div>
-                <div fxLayoutAlign="center">
+                <div fxLayoutAlign="center" fxLayoutAlign.lt-sm="start" >
                     <div>
                         <div class="edit-page__profile-heading" fxLayout="row">
                             <div>
                                 <p>CATEGORY</p>
                             </div>
                         </div>
-                        <div fxLayout="row" fxLayou.lt-sm="column" fxLayoutGap="20px">
+                        <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px">
                             <mat-form-field appearance="fill">
                                 <mat-label>Department</mat-label>
                                 <mat-select formControlName="deprtment" required>
@@ -87,16 +87,9 @@
                             <hr>
                         </div>
                     </div>
-                    <div fxLayout="row" fxLayoutGap="100px">
-                        <!-- <div class="edit-page__profile-details" fxLayoutAlign="center start" fxLayout="column">
-                            <p>Date of Birth</p>
-                            <p>Expericnce</p>
-                            <p>Genders</p>
-                            <p>Performance</p>
-                            <p>Last Project</p>
-                        </div> -->
+                    <div fxLayout="row"  fxLayoutGap="100px">
                         <div fxLayout="column">
-                            <div fxLayout="row" fxLayoutGap="20px">
+                            <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px">
                                 <mat-form-field appearance="fill">
                                     <mat-label>Choose a date</mat-label>
                                     <input matInput [matDatepicker]="picker" formControlName="dob">
@@ -120,7 +113,7 @@
                                     <!-- <mat-hint>{{animalControl.value?.sound}}</mat-hint> -->
                                 </mat-form-field>
                             </div>
-                            <div fxLayoutAlign="center" fxLayout="row" fxLayoutGap="20px">
+                            <div fxLayoutAlign="center" fxLayout.lt-sm="column" fxLayout="row" fxLayoutGap="20px">
                                     <mat-form-field appearance="fill">
                                         <mat-label>Rating</mat-label>
                                         <mat-select formControlName="rating" required>
@@ -149,9 +142,10 @@
                 </div>
             </div>
             <div fxLayoutAlign="center" color="warn"   fxLayoutGap="20px">
+                <button  class="edit-page__cal-btn"   mat-button (click)="cancelSubmit()"  >Cancel</button>
+
                 <button [disabled]="!editForm.valid" class="edit-page__sub-btn" type="submit" mat-button 
                     (click)="editSubmit()">Save</button>   
-                <button  class="edit-page__cal-btn"   mat-button (click)="cancelSubmit()"  >Cancel</button>
             </div>
         </form>
     </div>
