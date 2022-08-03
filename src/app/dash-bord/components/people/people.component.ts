@@ -1,7 +1,7 @@
 import { Component, OnInit,AfterViewInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import {MatSort} from '@angular/material/sort';
-import { emplyeedata } from 'src/app/enums.ts/employee.enums';
+import { EmplyeedataService } from 'src/app/provider/emplyeedata.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { FormControl } from '@angular/forms';
 import { Observable, of } from 'rxjs';
@@ -15,7 +15,7 @@ export class PeopleComponent implements OnInit,AfterViewInit{
 
   search!:string
   search1!:string
-  dat!:any
+  dat!:[]
   myControl = new FormControl('');
   myControl2 = new FormControl('');
   filteredOptions =  Observable<string[]>;
@@ -29,23 +29,21 @@ export class PeopleComponent implements OnInit,AfterViewInit{
   displayedColumns  = ['select','no', 'name', 'lastname','email','hiredate','phonenumber','salary'];
   displayedColumns2  = ['select1','no1', 'name1', 'lastname1','email1','hiredate1', 'phonenumber1','salary1'];
 
-  constructor(private data:emplyeedata) { }
+  constructor(private data:EmplyeedataService) { }
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;  
   @ViewChild(MatSort) sort!: MatSort;
 
-  getEmpData():Observable<any>{
-    return of(this.data.Emplyeedata) 
-  }
   getEmpList(){
-    this.getEmpData().subscribe({
-      next:(responce) =>{
-        this.dataSource.data = responce
-      }
-    }) 
+    this.data.getEmpData().subscribe(
+    data => this.dataSource.data = data
+    ) 
   }
   ngOnInit(): void {
     this.getEmpList()
+    // localStorage.setItem('EmpolyeeData',JSON.stringify(this.dataSource.data))
+    this.dat = localStorage.getItem('EmpolyeeData') ? JSON.parse(localStorage.getItem('EmpolyeeData')!):[]
+    this.dataSource.data =this.dat
   }
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
@@ -73,10 +71,7 @@ export class PeopleComponent implements OnInit,AfterViewInit{
     }
   }
   op(value:string){
-    this.dataSource.filter = value.trim().toLowerCase();
-   console.log( value ==this.dataSource.filter)   
-    console.log(this.dataSource.filter)
-    console.log(value)
+  this.dataSource.filter = value.trim().toLowerCase();
   }
   selectAll(e:any){
     if(e == true){

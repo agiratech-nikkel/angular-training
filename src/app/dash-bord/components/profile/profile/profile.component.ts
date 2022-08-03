@@ -1,32 +1,40 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import { Observable, of } from 'rxjs';
-import { emplyeedata } from 'src/app/enums.ts/employee.enums';
-// import 'rxjs/add/observable/of';
-
+import { EmplyeedataService } from 'src/app/provider/emplyeedata.service';
+import { MatDialogConfig,MatDialog } from '@angular/material/dialog';
+import { EditComponent } from '../../edit/edit.component';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })
+@Injectable({
+  providedIn: 'root'
+})
+
+
 export class ProfileComponent implements OnInit {
   emplyeeId:any
   emplyeelist:any
+  dat!:[]
 
-  constructor(private router:ActivatedRoute,private emplyeedata:emplyeedata) { }
+  constructor(
+    private router:ActivatedRoute,
+    public dialog:MatDialog
+    ) { }
   
   ngOnInit(): void {
     this.emplyeeId = this.router.snapshot.params
-    this.getEmpList()
+    this.getEmpData()
   }
-  getEmpData():Observable<any>{
-    return of(this.emplyeedata.Emplyeedata.filter( emp => emp.id == this.emplyeeId.id))   
+  getEmpData(){
+    this.dat = localStorage.getItem('EmpolyeeData') ? JSON.parse(localStorage.getItem('EmpolyeeData')!):{}
+    this.emplyeelist = this.dat.filter( (d: { id: number; }) => d.id == this.emplyeeId.id)  
   }
-  getEmpList(){
-    this.getEmpData().subscribe({
-      next:(responce) =>{
-        this.emplyeelist = responce
-      }
-    })
+  onEdit(){
+    const dialogconfig = new MatDialogConfig();
+    dialogconfig.width = "70%";
+    dialogconfig.autoFocus = true
+    this.dialog.open(EditComponent,{data:this.emplyeelist,disableClose:true})
   }
 }
