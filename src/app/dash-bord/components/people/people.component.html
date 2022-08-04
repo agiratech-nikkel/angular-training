@@ -24,6 +24,9 @@
       <mat-sidenav-content>
 
         <div class="peopel-tabel" fxLayout="column">
+          <div fxLayoutAlign="end">
+            <mat-slide-toggle (click)="enableEdit()">Enabel Edit</mat-slide-toggle>
+          </div>
           <table fxFlex="100" matSort mat-table [dataSource]="dataSource">
 
             <div matColumnDef="select">
@@ -37,30 +40,31 @@
 
             <div matColumnDef="no">
               <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                No
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ID
               </th>
-              <td class="peopel-tabel__data"  mat-cell *matCellDef="let element" (click)="onRoute(element)"> {{element.no}} </td>
+              <td class="peopel-tabel__data" mat-cell *matCellDef="let element" (click)="onRoute(element)">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{element.id}} </td>
             </div>
 
             <div matColumnDef="name">
               <th mat-header-cell *matHeaderCellDef mat-sort-header>
                 Firstname
               </th>
-              <td class="peopel-tabel__data" mat-cell *matCellDef="let element"
-              > 
-              <input [(ngModel)]="element.name" *ngIf="element.isEdit"  (dblclick)="onEdit(element)" value="{{element.name}}">
-              <span *ngIf="!element.isEdit" (click)="onSave(element)"  >{{element.name}}</span>
-             </td>
+              <td class="peopel-tabel__data" mat-cell *matCellDef="let element">
+                <input matTooltip="Double Click to Save" [(ngModel)]="element.name" *ngIf="element.isEdit" (dblclick)="onEdit(element)"
+                  value="{{element.name}}">
+                <span   *ngIf="!element.isEdit" (click)="onSave(element)">{{element.name}}</span>
+              </td>
             </div>
 
             <div matColumnDef="email">
               <th mat-header-cell *matHeaderCellDef mat-sort-header>
                 Email
               </th>
-              <td class="peopel-tabel__data" mat-cell *matCellDef="let element"
-              > 
-              <input [(ngModel)]="element.email" *ngIf="element.isEdit"  (dblclick)="onEdit(element)" value="{{element.email}}">
-                <span *ngIf="!element.isEdit" (click)="onSave(element)" >{{element.email}}</span> 
+              <td class="peopel-tabel__data" mat-cell *matCellDef="let element">
+                <input matTooltip="Double Click to Save" [(ngModel)]="element.email" *ngIf="element.isEdit" (dblclick)="onEdit(element)"
+                  value="{{element.email}}">
+                <span *ngIf="!element.isEdit" (click)="onSave(element)">{{element.email}}</span>
               </td>
             </div>
 
@@ -68,9 +72,10 @@
               <th mat-header-cell *matHeaderCellDef mat-sort-header>
                 Lastnname
               </th>
-              <td  class="peopel-tabel__data" mat-cell *matCellDef="let element"> 
-                <input [(ngModel)]="element.lastname" *ngIf="element.isEdit"  (dblclick)="onEdit(element)" value="{{element.lastname}}">
-                <span *ngIf="!element.isEdit" (click)="onSave(element)" >{{element.lastname}}</span>
+              <td class="peopel-tabel__data" mat-cell *matCellDef="let element">
+                <input matTooltip="Double Click to Save" [(ngModel)]="element.lastname" *ngIf="element.isEdit" (dblclick)="onEdit(element)"
+                  value="{{element.lastname}}">
+                <span *ngIf="!element.isEdit" (click)="onSave(element)">{{element.lastname}}</span>
               </td>
             </div>
 
@@ -78,35 +83,35 @@
               <th mat-header-cell *matHeaderCellDef mat-sort-header>
                 Phone:No
               </th>
-              <td class="peopel-tabel__data" mat-cell *matCellDef="let element"
-              >
-              <input [(ngModel)]="element.phonenumber" *ngIf="element.isEdit"  (dblclick)="onEdit(element)" value=" {{element.phonenumber}} ">
-              <span *ngIf="!element.isEdit" (click)="onSave(element)" > {{element.phonenumber}} </span></td>
+              <td class="peopel-tabel__data" mat-cell *matCellDef="let element">
+                <input matTooltip="Double Click to Save" [(ngModel)]="element.phonenumber" *ngIf="element.isEdit" (dblclick)="onEdit(element)"
+                  value=" {{element.phonenumber}} ">
+                <span *ngIf="!element.isEdit" (click)="onSave(element)"> {{element.phonenumber}} </span>
+              </td>
             </div>
             <div matColumnDef="hiredate">
               <th mat-header-cell *matHeaderCellDef mat-sort-header>
                 Department
               </th>
-              <td class="peopel-tabel__data" mat-cell *matCellDef="let element"
-              >
-              <select [(ngModel)]="element.hiredate" *ngIf="element.isEdit" (dblclick)="onEdit(element)" >
-                <option *ngFor="let op of options2"  [value]="op.id">{{op.key}}</option>
-              </select>
-              <span *ngIf="!element.isEdit" (click)="onSave(element)" > {{element.Department}} </span></td>
+              <td class="peopel-tabel__data" mat-cell *matCellDef="let element">
+                <select matTooltip="Double Click to Save" [(ngModel)]="element.hiredate" *ngIf="element.isEdit" (dblclick)="onEdit(element)">
+                  <option *ngFor="let op of options2" [value]="op.id">{{op.key}}</option>
+                </select>
+                <span *ngIf="!element.isEdit" (click)="onSave(element)"> {{element.Department}} </span>
+              </td>
             </div>
 
             <div matColumnDef="salary">
               <th mat-header-cell *matHeaderCellDef mat-sort-header>
                 Gender
               </th>
-              <td class="peopel-tabel__data" mat-cell *matCellDef="let element"
-              >
-              <select [(ngModel)]="element.salary" (dblclick)="onEdit(element)" *ngIf="element.isEdit" >
-                <option *ngFor="let op of options" [value]="op.id">{{op.key}}</option>
-              </select>
-              <span *ngIf="!element.isEdit" (click)="onSave(element)" > {{element.salary}} </span>
-            </td>
-          </div>
+              <td class="peopel-tabel__data" mat-cell *matCellDef="let element">
+                <select [(ngModel)]="element.salary" (dblclick)="onEdit(element)" *ngIf="element.isEdit">
+                  <option *ngFor="let op of options" [value]="op.id">{{op.key}}</option>
+                </select>
+                <span *ngIf="!element.isEdit" (click)="onSave(element)"> {{element.salary}} </span>
+              </td>
+            </div>
 
             <ng-container matColumnDef="no1">
               <th mat-header-cell *matHeaderCellDef> </th>

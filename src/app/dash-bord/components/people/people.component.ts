@@ -24,9 +24,10 @@ export class PeopleComponent implements OnInit,AfterViewInit{
   filteredOptions =  Observable<string[]>;
   filteredOptions2 =  Observable<string[]>;
   dataSource = new MatTableDataSource<any>;
-  onEditing = false
+  onEditing = true
   empUpdate:any
   datas!:number
+  eDit!:boolean
 
   checks = false
   displayNoRecords=false
@@ -93,33 +94,47 @@ export class PeopleComponent implements OnInit,AfterViewInit{
   }
 
   onEdit(element:any){
-    this.onEditing = false
-    console.log(element.id)
-    element.isEdit= false
+    if(this.onEditing == true){
+      element.isEdit = false 
+      console.log("inifONedit")
+  }
+  else{
+    element.isEdit = false
+    console.log("inelseONedit")
     this.empUpdate = JSON.parse(localStorage.getItem('EmpolyeeData')!)
     this.datas = this.empUpdate.findIndex((d:any) => {return  d.id == element.id})
-    console.log(this.empUpdate)
-      this.empUpdate[this.datas].name = element.name
-      this.empUpdate[this.datas].lastname= element.lastname
-      this.empUpdate[this.datas].phonenumber= element.phonenumber
-      this.empUpdate[this.datas].email = element.email
-      this.empUpdate[this.datas].hiredate = element.hiredate
-      this.empUpdate[this.datas].salary = element.salary
-      localStorage.setItem('EmpolyeeData', JSON.stringify(this.empUpdate))  
-  }
+    this.empUpdate[this.datas].name = element.name
+    this.empUpdate[this.datas].lastname= element.lastname
+    this.empUpdate[this.datas].phonenumber= element.phonenumber
+    this.empUpdate[this.datas].email = element.email
+    this.empUpdate[this.datas].hiredate = element.hiredate
+    this.empUpdate[this.datas].salary = element.salary
+    localStorage.setItem('EmpolyeeData', JSON.stringify(this.empUpdate)) 
+    } 
+}
   onSave(element:any){
-    this.onEditing = true
+    if(this.onEditing == true){
+    element.isEdit = false
+    console.log("inifONSave")
+    this.router.navigate(['/dashBoard/profile',element.id])
+    }
+    else{
     element.isEdit= true
-    console.log(element)
-   
+      console.log("inelseONSave")
+    }
   }
   onRoute(element:any){
     this.router.navigate(['/dashBoard/profile',element.id])
   }
+  enableEdit(){
+    if(this.onEditing == true){
+      this.onEditing = false   }
+   else{ 
+      this.onEditing = true
+    }
+    console.log()
+  }
+  call(){
+    console.log("sknx")
+  }
 }
-
-    
-    //   this.empUpdate[this.datas].Expericnce = this.editForm.controls['expericnce'].value
-    //   this.empUpdate[this.datas].salary= this.editForm.controls['gender'].value
-    //   this.empUpdate[this.datas].rateing = this.editForm.controls['rating'].value
-    //   this.empUpdate[this.datas].lastproject = this.editForm.controls['lastProject'].value

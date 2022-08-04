@@ -9,6 +9,11 @@
             width:200px;
             height: 30vh;
         }
+        &--field_error{
+            color: red;
+            font-size: 10px;
+            margin-top: -15px;
+        }
     }
     &__sub-btn{
         background: #65d782;
