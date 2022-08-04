@@ -22,8 +22,8 @@
             </mat-sidenav>
             <mat-sidenav-content>
                 <div class="dashboard__container_card" fxLayout.lt-sm="column" fxLayoutGap.lt-sm="10px"
-                    fxLayoutGap.lt-md="2px" fxLayoutAlign="center end" fxLayoutAlign.lt-sm="start" fxLayoutGap="100px">
-                    <mat-card class="dashboard__container_card-timecard" fxFelx="100" fxLayout="row"
+                    fxLayoutGap.lt-md="2px" fxLayoutAlign="center end" fxFelx="100" fxLayoutAlign.lt-sm="start" fxLayoutGap="100px">
+                    <mat-card class="dashboard__container_card-timecard" fxFelx="50" fxLayout="row"
                         fxLayoutAlign="center center">
                         <div fxLayout="row">
                             <mat-icon class="dashboard__container_card-timecard-icon" fxLayoutAlign="center center">
@@ -31,7 +31,7 @@
                         </div>
                         <div fxLayout="row">
                             <div fxLayout="column">
-                                <div fxLayout="row" fxLayout.lt-sm="column">
+                                <div fxLayout="row" fxLayout.lt-sm="column" >
                                     <div fxLayout.lt-sm="row" fxLayoutAlign.lt-sm="center center">
                                         <h3 class="dashboard__container_card-timecard-content">Actual&nbsp;hours</h3>
                                         <p id="card-content-p" class="">173</p>
@@ -73,12 +73,15 @@
                     </mat-card>
                 </div>
                 <div>
-                    <div class="dashboard__container_graph" fxLayout.lt-sm="column" fxLayout.lt-md="column"
-                        fxFlex.lt-sm="100" fxFlex.lt-md="100" fxLayoutGap.lt-sm="10px" fxFlex="50" fxLayout="row"
+                    <div class="dashboard__container_graph" fxLayout.lt-md="column" fxFlex.lt-sm="100"
+                        fxFlex.lt-md="100" fxLayoutGap.lt-sm="10px" fxFlex="50" fxLayout="row"
                         fxLayoutAlign.lt-st="center start" fxLayoutAlign="start end">
                         <canvas id="myChart"></canvas>
                         <canvas id="myChart-1"></canvas>
                     </div>
+                </div>
+                <div>
+                    <app-feedback-carousel></app-feedback-carousel>
                 </div>
             </mat-sidenav-content>
         </mat-sidenav-container>

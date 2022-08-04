@@ -1,0 +1,19 @@
+<div class="request">
+    <h1>Request From Empolyee</h1>
+    <owl-carousel-o [options]="customOptions">
+        <ng-template carouselSlide *ngFor="let x of data">
+            <mat-card class="request-carsoul">
+                <div fxLayout="row" fxLayoutGap="25px">
+                    <div fxFlex="30">
+                        <img class="request-carsoul__image" src="{{x.image}}">
+                    </div>
+                    <div fxLayout="column" fxLayoutAlign="center" fxLayoutGap="0px">
+                        <h3 fxLayoutAlign="center">{{x.name}}&nbsp;{{x.lastname}}</h3>
+                        <p>#{{x.id}}</p>
+                    </div>
+                </div>
+                <p>{{x.request}}</p>
+            </mat-card>
+        </ng-template>
+    </owl-carousel-o>
+</div>

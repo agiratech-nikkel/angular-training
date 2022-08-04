@@ -19,6 +19,11 @@ import { AgePipe } from '../pipes/age.pipe';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatNativeDateModule} from '@angular/material/core';
 import { EditComponent } from './components/edit/edit.component';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { FeedbackCarouselComponent } from './components/feedback-carousel/feedback-carousel.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+import {MatTooltipModule} from '@angular/material/tooltip';
+
 @NgModule({
   declarations: [
     DashBordComponent,
@@ -26,7 +31,8 @@ import { EditComponent } from './components/edit/edit.component';
     PeopleComponent,
     ProfileComponent,
     AgePipe,
-    EditComponent
+    EditComponent,
+    FeedbackCarouselComponent
     ],
   imports: [
     CommonModule,
@@ -43,9 +49,13 @@ import { EditComponent } from './components/edit/edit.component';
     MatDatepickerModule,
     MatNativeDateModule,
     MatDialogModule,
+    MatSlideToggleModule,
+    CarouselModule,
+    MatTooltipModule
   ],
   exports:[
-    EditComponent
+    EditComponent,
+    FeedbackCarouselComponent
   ]
 })
 export class DashBordModule {}
