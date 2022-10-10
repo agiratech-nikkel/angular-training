@@ -23,6 +23,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { FeedbackCarouselComponent } from './components/feedback-carousel/feedback-carousel.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     ProfileComponent,
     AgePipe,
     EditComponent,
-    FeedbackCarouselComponent
+    FeedbackCarouselComponent,
+    FooterComponent
     ],
   imports: [
     CommonModule,

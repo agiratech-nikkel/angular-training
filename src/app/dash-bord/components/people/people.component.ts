@@ -19,8 +19,8 @@ export class PeopleComponent implements OnInit,AfterViewInit{
   search1!:string
   name!:string
   dat!:[]
+  value:any
   myControl = new FormControl('');
-  myControl2 = new FormControl('');
   filteredOptions =  Observable<string[]>;
   filteredOptions2 =  Observable<string[]>;
   dataSource = new MatTableDataSource<any>;
@@ -28,14 +28,16 @@ export class PeopleComponent implements OnInit,AfterViewInit{
   empUpdate:any
   datas!:number
   eDit!:boolean
-
+  dataset!:{}
+  checklist = false
   checks = false
   displayNoRecords=false
+
   options = [{key: "Male", id:'Male'},{key: 'Female', id:'Female'}];
   options2 = [{key:'Developer',id:'Developer'},{key:'DevOps',id:'DevOps'}, {key:"Testing",id:"Testing"},{key:"Admin",id:"Admin"}];
-  options3 = [{key:'Development',id:'Development'},{key:'Management',id:'Management'}];
-  displayedColumns  = ['select','no', 'name', 'lastname','email','hiredate','phonenumber','salary',];
-  displayedColumns2  = ['select1','no1', 'name1', 'lastname1','email1','hiredate1', 'phonenumber1','salary1',];
+  options3 = [{key:'Development',id:'Development'},{key:'Management',id:'Management'},{key:'Testing',id:'testing'}];
+  displayedColumns  = ['select','name', 'no','email','hiredate','phonenumber','salary'];
+  displayedColumns2  = ['select1','name1', 'no1','email1','hiredate1', 'phonenumber1','salary1'];
 
   constructor(
     private data:EmplyeedataService,
@@ -55,7 +57,12 @@ export class PeopleComponent implements OnInit,AfterViewInit{
     this.getEmpList()
     this.dat = localStorage.getItem('EmpolyeeData') ? JSON.parse(localStorage.getItem('EmpolyeeData')!):[]
     this.dataSource.data =this.dat
-    
+    if(!this.checklist){
+      this.displayedColumns.splice(0,1,'no')
+      this.displayedColumns.splice(2,1)
+      this.displayedColumns2.splice(0,1,'no1')
+      this.displayedColumns2.splice(2,1)
+    }
   }
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
@@ -73,17 +80,9 @@ export class PeopleComponent implements OnInit,AfterViewInit{
    
     }
   }
-  filter1(){
-    this.dataSource.filter = this.search1.trim().toLowerCase()
-    if(this.dataSource.filteredData.length==0){
-      this.displayNoRecords=true;
-    }else{
-      this.displayNoRecords=false;
-   
-    }
-  }
-  op(value:string){
-  this.dataSource.filter = value.trim().toLowerCase();
+
+  op(){
+  this.dataSource.filter = this.value.trim().toLowerCase();
   }
   selectAll(e:any){
     if(e == true){
@@ -96,11 +95,9 @@ export class PeopleComponent implements OnInit,AfterViewInit{
   onEdit(element:any){
     if(this.onEditing == true){
       element.isEdit = false 
-      console.log("inifONedit")
   }
   else{
     element.isEdit = false
-    console.log("inelseONedit")
     this.empUpdate = JSON.parse(localStorage.getItem('EmpolyeeData')!)
     this.datas = this.empUpdate.findIndex((d:any) => {return  d.id == element.id})
     this.empUpdate[this.datas].name = element.name
@@ -115,12 +112,10 @@ export class PeopleComponent implements OnInit,AfterViewInit{
   onSave(element:any){
     if(this.onEditing == true){
     element.isEdit = false
-    console.log("inifONSave")
     this.router.navigate(['/dashBoard/profile',element.id])
     }
     else{
     element.isEdit= true
-      console.log("inelseONSave")
     }
   }
   onRoute(element:any){
@@ -132,9 +127,6 @@ export class PeopleComponent implements OnInit,AfterViewInit{
    else{ 
       this.onEditing = true
     }
-    console.log()
   }
-  call(){
-    console.log("sknx")
-  }
+
 }

@@ -15,10 +15,9 @@ import { EmplyeedataService } from 'src/app/provider/emplyeedata.service';
 export class EditComponent implements OnInit {
 
   editForm!:FormGroup
-  // emplyeelist!:{}  
   empUpdate:any
   dat!:number
-
+  editObj!:{}
 
   deprtment = [{key:"Development",value:"Development"},{key:"Testing",value:"testing"},{key:"Management",value:"Management"}]
   division = [{key:"Quality Analyst",value:"Quality Analyst"},{key:"RoR",value:"RoR"},{key:"Node Js",value:"Node Js"},{key:"FrontEnd UI",value:"FrontEnd UI"},{key:"HR & Admin",value:"HR & Admin"}]
@@ -37,11 +36,12 @@ export class EditComponent implements OnInit {
 
 
   ngOnInit(): void {
+    localStorage.getItem('EmpolyeeData') ? JSON.parse(localStorage.getItem('EmpolyeeData')!):[]
     this.editForm = this.fb.group({
       name: new FormControl(this.data[0].name, [Validators.required]),
       lastName: new FormControl(this.data[0].lastname, [Validators.required]),
       id: new FormControl(this.data[0].id, [Validators.required]),
-      phoneNumber: new FormControl (this.data[0].phonenumber,[Validators.required,Validators.pattern("([0-9]{3}\)?[.]([0-9]{3})[.]([0-9]{4})")]),
+      phoneNumber: new FormControl (this.data[0].phonenumber,[Validators.required,Validators.pattern("^[0-9]{10}$")]),
       email: new FormControl (this.data[0].email,[Validators.required,Validators.email]),
       deprtment: new FormControl (this.data[0].Department,[Validators.required]),
       division: new FormControl (this.data[0].division,[Validators.required]),
@@ -56,21 +56,27 @@ export class EditComponent implements OnInit {
   editSubmit(){
     this.empUpdate = JSON.parse(localStorage.getItem('EmpolyeeData')!)
     this.dat = this.empUpdate.findIndex((d:any) => {return  d.id == this.data[0].id})
-      this.empUpdate[this.dat].lastname = this.editForm.controls['lastName'].value
-      this.empUpdate[this.dat].name = this.editForm.controls['name'].value
-      this.empUpdate[this.dat].id= this.editForm.controls['id'].value
-      this.empUpdate[this.dat].phonenumber= this.editForm.controls['phoneNumber'].value
-      this.empUpdate[this.dat].email = this.editForm.controls['email'].value
-      this.empUpdate[this.dat].Department = this.editForm.controls['deprtment'].value
-      this.empUpdate[this.dat].division = this.editForm.controls['division'].value
-      this.empUpdate[this.dat].dob = this.editForm.controls['dob'].value
-      this.empUpdate[this.dat].Expericnce = this.editForm.controls['expericnce'].value
-      this.empUpdate[this.dat].salary= this.editForm.controls['gender'].value
-      this.empUpdate[this.dat].rateing = this.editForm.controls['rating'].value
-      this.empUpdate[this.dat].lastproject = this.editForm.controls['lastProject'].value
+    this.editObj = {
+      lastname : this.editForm.controls['lastName'].value,
+      name:this.editForm.controls['name'].value,
+      id: this.editForm.controls['id'].value,
+      phonenumber: this.editForm.controls['phoneNumber'].value,
+      email:this.editForm.controls['email'].value,
+      Department : this.editForm.controls['deprtment'].value,
+      lastproject : this.editForm.controls['lastProject'].value,
+      rateing : this.editForm.controls['rating'].value,
+      salary : this.editForm.controls['gender'].value,
+      Expericnce : this.editForm.controls['expericnce'].value,
+      dob : this.editForm.controls['dob'].value,
+      division : this.editForm.controls['division'].value,
+      image:this.data[0].image,
+      hiredate:this.data[0].hiredate
+    }
+    this.empUpdate[this.dat] = this.editObj
       localStorage.setItem('EmpolyeeData', JSON.stringify(this.empUpdate))
+      localStorage.getItem('EmpolyeeData') ? JSON.parse(localStorage.getItem('EmpolyeeData')!):[]
     this.dialogRef.close();
-    this.router.navigate(['/dashBoard/peopel']) 
+
   }
   cancelSubmit(){
     this.dialogRef.close();

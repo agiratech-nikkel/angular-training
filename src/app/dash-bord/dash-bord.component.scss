@@ -1,56 +1,58 @@
 ::ng-deep app-dash-bord{
-.dashboard {
-    .dashboard__header {
-        font-size: 20px;
-
-        .dashboard__header_navbar {
-            background-color: #3a87bf;
-            color: white;
-            .dashboard__header_navbar-navicon {
-                font-size: 25px;
-                height: inherit;
-                cursor: pointer;
-            }
-
-            .dashboard__header_navbar-titel {
-                margin-left: 5px
-            }
-
-            .dashboard__header_navbar-img {
-                height: 5vh;
-                cursor: pointer;
-            }
-        }
-    }
-
-    .dashboard__container_card {
-        height: inherit;
-        margin-top: 10px;
-
-        .dashboard__container_card-timecard{
-            background-color: #1b65ba;
-            color: white;
-
-            .dashboard__container_card-timecard-icon {
-                width: 100%;
-                height: 15vh;
-                font-size: 100px;
-                background-color: #125195;
+    .dashboard {
+        .dashboard__header {
+            font-size: 20px;
+    
+            .dashboard__header_navbar {
+                background-color: #3a87bf;
                 color: white;
-            }
-
-            .dashboard__container_card-timecard-content {
-                margin: 0px 20px 0px;
-            }
-
-            .dashboard__container_card-timecard-line {
-                height: 1px;
-                background-color: white;
-                border-color: white;
-                margin: 0 0 0px;
+                .dashboard__header_navbar-navicon {
+                    font-size: 25px;
+                    height: inherit;
+                    cursor: pointer;
+                }
+    
+                .dashboard__header_navbar-titel {
+                    margin-left: 5px
+                }
+    
+                .dashboard__header_navbar-img {
+                    height: 5vh;
+                    cursor: pointer;
+                }
             }
         }
-    }
+    
+        .dashboard__container{
+            &_card {
+                height: inherit;
+                margin-top: 10px;
+        
+                .dashboard__container_card-timecard{
+                    background-color: #1b65ba;
+                    color: white;
+        
+                    .dashboard__container_card-timecard-icon {
+                        width: 100%;
+                        height: 15vh;
+                        font-size: 100px;
+                        background-color: #125195;
+                        color: white;
+                    }
+        
+                    .dashboard__container_card-timecard-content {
+                        margin: 0px 20px 0px;
+                    }
+        
+                    .dashboard__container_card-timecard-line {
+                        height: 1px;
+                        background-color: white;
+                        border-color: white;
+                        margin: 0 0 0px;
+                    }
+                }
+            }
+        }
 
     #card-content-p {
         margin: 0 20px 0px !important;

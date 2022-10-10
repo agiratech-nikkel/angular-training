@@ -1,4 +1,4 @@
-import { Component, Injectable, OnInit } from '@angular/core';
+import {Component, Injectable, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import { EmplyeedataService } from 'src/app/provider/emplyeedata.service';
 import { MatDialogConfig,MatDialog } from '@angular/material/dialog';
@@ -13,10 +13,11 @@ import { EditComponent } from '../../edit/edit.component';
 })
 
 
-export class ProfileComponent implements OnInit {
+export class ProfileComponent implements OnInit{
   emplyeeId:any
   emplyeelist:any
   dat!:[]
+  call = true
 
   constructor(
     private router:ActivatedRoute,
@@ -35,6 +36,11 @@ export class ProfileComponent implements OnInit {
     const dialogconfig = new MatDialogConfig();
     dialogconfig.width = "70%";
     dialogconfig.autoFocus = true
-    this.dialog.open(EditComponent,{data:this.emplyeelist,disableClose:true})
+    this.dialog.open(EditComponent,{data:this.emplyeelist,disableClose:true}).afterClosed().subscribe(
+    result =>{
+    this.dat = localStorage.getItem('EmpolyeeData') ? JSON.parse(localStorage.getItem('EmpolyeeData')!):{}
+    this.emplyeelist = this.dat.filter( (d: { id: number; }) => d.id == this.emplyeeId.id)  
+      }
+    )
   }
 }

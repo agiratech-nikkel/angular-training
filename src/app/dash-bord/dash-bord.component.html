@@ -1,4 +1,4 @@
-<div class="dashboard">
+<div class="dashboard" fxFlexFill>
     <div class="dashboard__header">
         <mat-card class="dashboard__header_navbar" fxLayout="row">
             <div fxLayout="row">
@@ -21,9 +21,10 @@
                 </mat-nav-list>
             </mat-sidenav>
             <mat-sidenav-content>
-                <div class="dashboard__container_card" fxLayout.lt-sm="column" fxLayoutGap.lt-sm="10px"
-                    fxLayoutGap.lt-md="2px" fxLayoutAlign="center end" fxFelx="100" fxLayoutAlign.lt-sm="start" fxLayoutGap="100px">
-                    <mat-card class="dashboard__container_card-timecard" fxFelx="50" fxLayout="row"
+                <div class="dashboard__container_card" fxLayout.lt-sm="column"fxLayout.lt-md="column" fxLayoutGap.lt-sm="10px"
+                    fxLayoutGap.lt-md="2px" fxLayoutAlign="center" fxFelx="100" fxFelx.lt-md="80" fxLayoutAlign.lt-sm="start"
+                    fxLayoutGap="10px">
+                    <mat-card class="dashboard__container_card-timecard" fxFelx="100" fxLayout="row"
                         fxLayoutAlign="center center">
                         <div fxLayout="row">
                             <mat-icon class="dashboard__container_card-timecard-icon" fxLayoutAlign="center center">
@@ -31,43 +32,55 @@
                         </div>
                         <div fxLayout="row">
                             <div fxLayout="column">
-                                <div fxLayout="row" fxLayout.lt-sm="column" >
+                                <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap.lt-sm="0px" fxLayoutGap="200px">
                                     <div fxLayout.lt-sm="row" fxLayoutAlign.lt-sm="center center">
                                         <h3 class="dashboard__container_card-timecard-content">Actual&nbsp;hours</h3>
-                                        <p id="card-content-p" class="">173</p>
+                                        <p id="card-content-p" class=""><b>173</b></p>
                                     </div>
                                     <div fxLayout.lt-sm="row" fxLayoutAlign.lt-sm="center center">
                                         <h3 class="dashboard__container_card-timecard-content">Filled&nbsp;hours</h3>
-                                        <p id="card-content-p">173</p>
+                                        <p id="card-content-p"><b>173</b></p>
                                     </div>
                                 </div>
                                 <hr class="dashboard__container_card-timecard-line">
-                                <div fxLayout="row">
-                                    <p id="card-content-m"><b>jun month timesheet 173/173</b></p>
+                                <div fxLayout="row" fxLayoutGap="200px" fxLayoutGap.lt-sm="0px" fxLayoutGap.lt-md="100px">
+                                    <div>
+                                        <p id="card-content-m"><b>100.00% filled JUN month timesheet</b></p>
+                                    </div>
+                                    <div>
+                                        <p id="card-content-m"> <b>173/173</b></p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </mat-card>
                     <mat-card class="dashboard__container_card-timecard" fxFelx="100" fxLayout="row"
                         fxLayoutAlign="center center">
-                        <div fxLayout="row" fxFelx="100">
-                            <mat-icon fxFelx="100" class="dashboard__container_card-timecard-icon"
-                                fxLayoutAlign="center center">schedule</mat-icon>
+                        <div fxLayout="row">
+                            <mat-icon class="dashboard__container_card-timecard-icon" fxLayoutAlign="center center">
+                                schedule</mat-icon>
                         </div>
-                        <div fxLayout="column">
-                            <div fxLayout="row" fxLayout.lt-sm="column">
-                                <div fxLayout.lt-sm="row" fxLayoutAlign.lt-sm="center center">
-                                    <h3 class="dashboard__container_card-timecard-content">Actual&nbsp;hours</h3>
-                                    <p id="card-content-p">181</p>
+                        <div fxLayout="row">
+                            <div fxLayout="column">
+                                <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap.lt-sm="0px" fxLayoutGap="200px">
+                                    <div fxLayout.lt-sm="row" fxLayoutAlign.lt-sm="center center">
+                                        <h3 class="dashboard__container_card-timecard-content">ACTUAL&nbsp;HOURS</h3>
+                                        <p id="card-content-p" class=""><b>181</b></p>
+                                    </div>
+                                    <div fxLayout.lt-sm="row" fxLayoutAlign.lt-sm="center center">
+                                        <h3 class="dashboard__container_card-timecard-content">FILLED&nbsp;HOURS</h3>
+                                        <p id="card-content-p"><b>181</b></p>
+                                    </div>
                                 </div>
-                                <div fxLayout.lt-sm="row" fxLayoutAlign.lt-sm="center center">
-                                    <h3 class="dashboard__container_card-timecard-content">Filled&nbsp;hours</h3>
-                                    <p id="card-content-p">181</p>
+                                <hr class="dashboard__container_card-timecard-line">
+                                <div fxLayout="row" fxLayoutGap="200px" fxLayoutGap.lt-sm="0px"fxLayoutGap.lt-md="100px">
+                                    <div>
+                                        <p id="card-content-m"><b>100.00% filled MAY month timesheet</b></p>
+                                    </div>
+                                    <div>
+                                        <p id="card-content-m"> <b>181/181</b></p>
+                                    </div>
                                 </div>
-                            </div>
-                            <hr class="dashboard__container_card-timecard-line">
-                            <div fxLayout="row">
-                                <p id="card-content-m"><b>may month timesheet 181/181</b></p>
                             </div>
                         </div>
                     </mat-card>
@@ -85,5 +98,6 @@
                 </div>
             </mat-sidenav-content>
         </mat-sidenav-container>
+        <app-footer></app-footer>
     </div>
 </div>

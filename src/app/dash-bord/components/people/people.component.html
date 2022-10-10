@@ -13,7 +13,7 @@
   </div>
 
   <div>
-    <mat-sidenav-container>
+    <mat-sidenav-container class="peopel-sidenav">
       <mat-sidenav #sidenav>
         <mat-nav-list>
           <a mat-list-item [routerLink]="['/dashBoard/attendance']"> Attendances </a>
@@ -25,7 +25,7 @@
 
         <div class="peopel-tabel" fxLayout="column">
           <div fxLayoutAlign="end">
-            <mat-slide-toggle (click)="enableEdit()">Enabel Edit</mat-slide-toggle>
+            <mat-slide-toggle (click)="enableEdit()">Enabel In-Line Edit</mat-slide-toggle>
           </div>
           <table fxFlex="100" matSort mat-table [dataSource]="dataSource">
 
@@ -33,77 +33,71 @@
               <th mat-header-cell *matHeaderCellDef>
                 <mat-checkbox (change)="selectAll($event.checked)"></mat-checkbox>
               </th>
-              <td mat-cell *matCellDef="let element">
-                <mat-checkbox [checked]="checks"></mat-checkbox>
+              <td class="peopel-tabel__data-col1" mat-cell *matCellDef="let element;">
+                <mat-checkbox *ngIf="checklist" [checked]="checks"></mat-checkbox>
               </td>
             </div>
 
             <div matColumnDef="no">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ID
+              <th mat-sort-header mat-header-cell *matHeaderCellDef>
+                <mat-icon class="peopel-tabel__header-icon">perm_identity</mat-icon>&nbsp;ID
               </th>
               <td class="peopel-tabel__data" mat-cell *matCellDef="let element" (click)="onRoute(element)">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{element.id}} </td>
+                {{element.id}} </td>
             </div>
 
             <div matColumnDef="name">
               <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                Firstname
+                <mat-icon class="peopel-tabel__header-icon">perm_identity</mat-icon>&nbsp;Name
               </th>
               <td class="peopel-tabel__data" mat-cell *matCellDef="let element">
-                <input matTooltip="Double Click to Save" [(ngModel)]="element.name" *ngIf="element.isEdit" (dblclick)="onEdit(element)"
-                  value="{{element.name}}">
-                <span   *ngIf="!element.isEdit" (click)="onSave(element)">{{element.name}}</span>
+                <input matTooltip="Double Click to Save" [(ngModel)]="element.name" *ngIf="element.isEdit"
+                  (dblclick)="onEdit(element)" value="{{element.name}}">
+                <input matTooltip="Double Click to Save" [(ngModel)]="element.lastname" *ngIf="element.isEdit"
+                  (dblclick)="onEdit(element)" value="{{element.lastname}}">
+                <span *ngIf="!element.isEdit"
+                  (click)="onSave(element)">{{element.name}}&nbsp;&nbsp;{{element.lastname}}</span><span
+                  class="peopel-tabel__data--name_info"><i class="fa-solid fa-angle-down"></i></span>
               </td>
             </div>
 
             <div matColumnDef="email">
               <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                Email
+                <mat-icon class="peopel-tabel__header-icon">mail</mat-icon>&nbsp;Email
               </th>
               <td class="peopel-tabel__data" mat-cell *matCellDef="let element">
-                <input matTooltip="Double Click to Save" [(ngModel)]="element.email" *ngIf="element.isEdit" (dblclick)="onEdit(element)"
-                  value="{{element.email}}">
+                <input matTooltip="Double Click to Save" [(ngModel)]="element.email" *ngIf="element.isEdit"
+                  (dblclick)="onEdit(element)" value="{{element.email}}">
                 <span *ngIf="!element.isEdit" (click)="onSave(element)">{{element.email}}</span>
-              </td>
-            </div>
-
-            <div matColumnDef="lastname">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                Lastnname
-              </th>
-              <td class="peopel-tabel__data" mat-cell *matCellDef="let element">
-                <input matTooltip="Double Click to Save" [(ngModel)]="element.lastname" *ngIf="element.isEdit" (dblclick)="onEdit(element)"
-                  value="{{element.lastname}}">
-                <span *ngIf="!element.isEdit" (click)="onSave(element)">{{element.lastname}}</span>
               </td>
             </div>
 
             <div matColumnDef="phonenumber">
               <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                Phone:No
+                <mat-icon class="peopel-tabel__header-icon">phone</mat-icon>&nbsp;Phone Number
               </th>
               <td class="peopel-tabel__data" mat-cell *matCellDef="let element">
-                <input matTooltip="Double Click to Save" [(ngModel)]="element.phonenumber" *ngIf="element.isEdit" (dblclick)="onEdit(element)"
-                  value=" {{element.phonenumber}} ">
+                <input matTooltip="Double Click to Save" [(ngModel)]="element.phonenumber" *ngIf="element.isEdit"
+                  (dblclick)="onEdit(element)" value=" {{element.phonenumber}} ">
                 <span *ngIf="!element.isEdit" (click)="onSave(element)"> {{element.phonenumber}} </span>
               </td>
             </div>
             <div matColumnDef="hiredate">
               <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                Department
+                <mat-icon class="peopel-tabel__header-icon">badge</mat-icon>&nbsp;Department
               </th>
               <td class="peopel-tabel__data" mat-cell *matCellDef="let element">
-                <select matTooltip="Double Click to Save" [(ngModel)]="element.hiredate" *ngIf="element.isEdit" (dblclick)="onEdit(element)">
-                  <option *ngFor="let op of options2" [value]="op.id">{{op.key}}</option>
+                <select matTooltip="Double Click to Save" [(ngModel)]="element.hiredate" *ngIf="element.isEdit"
+                  (dblclick)="onEdit(element)">
+                  <option *ngFor="let op of options3" [value]="op.id">{{op.key}}</option>
                 </select>
-                <span *ngIf="!element.isEdit" (click)="onSave(element)"> {{element.Department}} </span>
+                <span *ngIf="!element.isEdit" (click)="onSave(element)"> {{element.hiredate}} </span>
               </td>
             </div>
 
             <div matColumnDef="salary">
               <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                Gender
+                <mat-icon class="peopel-tabel__header-icon">male</mat-icon>&nbsp;Gender
               </th>
               <td class="peopel-tabel__data" mat-cell *matCellDef="let element">
                 <select [(ngModel)]="element.salary" (dblclick)="onEdit(element)" *ngIf="element.isEdit">
@@ -111,6 +105,9 @@
                 </select>
                 <span *ngIf="!element.isEdit" (click)="onSave(element)"> {{element.salary}} </span>
               </td>
+            </div>
+            <div matColumnDef="null">
+
             </div>
 
             <ng-container matColumnDef="no1">
@@ -124,7 +121,8 @@
             <div matColumnDef="name1">
               <th mat-header-cell *matHeaderCellDef>
                 <mat-form-field class="example-full-width" appearance="fill">
-                  <input matInput [(ngModel)]="search" placeholder="Enter Frist Name" (keyup)="filter()">
+                  <input matInput class="peopel-tabel__data-search-text" [(ngModel)]="search" placeholder="Search"
+                    (keyup)="filter()">
                 </mat-form-field>
               </th>
             </div>
@@ -134,13 +132,7 @@
               </th>
             </div>
 
-            <div matColumnDef="lastname1">
-              <th mat-header-cell *matHeaderCellDef>
-                <mat-form-field class="example-full-width" appearance="fill">
-                  <input matInput [(ngModel)]="search1" placeholder="Enter Frist Name" (keyup)="filter1()">
-                </mat-form-field>
-              </th>
-            </div>
+
 
             <div matColumnDef="phonenumber1">
               <th mat-header-cell *matHeaderCellDef>
@@ -148,32 +140,21 @@
             </div>
             <div matColumnDef="hiredate1">
               <th mat-header-cell *matHeaderCellDef>
-                <form class="example-form">
-                  <mat-form-field class="example-full-width" appearance="fill">
-                    <mat-label>Enter Department</mat-label>
-                    <input type="text" aria-label="Enter Department" matInput [formControl]="myControl2"
-                      [matAutocomplete]="auto">
-                    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="op($event.option.value)">
-                      <mat-option *ngFor="let op of options2" [value]="op.id">{{op.key}}</mat-option>
-                    </mat-autocomplete>
-                  </mat-form-field>
-                </form>
+                <select class="peopel-tabel__data-select" [(ngModel)]="value" (change)="op()">
+                  <option *ngFor="let op of options3" [value]="op.id">{{op.key}}</option>
+                </select>
               </th>
             </div>
 
             <div matColumnDef="salary1">
               <th mat-header-cell *matHeaderCellDef>
-                <form class="example-form">
-                  <mat-form-field class="example-full-width" appearance="fill">
-                    <mat-label>Enter Gender</mat-label>
-                    <input type="text" aria-label="Enter Gender" matInput [formControl]="myControl"
-                      [matAutocomplete]="auto">
-                    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="op($event.option.value)">
-                      <mat-option *ngFor="let op of options" [value]="op.id">{{op.key}}</mat-option>
-                    </mat-autocomplete>
-                  </mat-form-field>
-                </form>
+                <select class="peopel-tabel__data-select" [(ngModel)]="value" (change)="op()">
+                  <option *ngFor="let op of options" [value]="op.id">{{op.key}}</option>
+                </select>
               </th>
+            </div>
+            <div matColumnDef="null1">
+
             </div>
 
 
