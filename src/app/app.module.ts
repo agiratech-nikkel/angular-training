@@ -19,6 +19,8 @@ import { Testing2Component } from './testing2/testing2.component';
     TestComponent,
     Test1Component,
     Test2Component,
+    Testing1Component,
+    Testing2Component,
   ],
   imports: [
     BrowserModule,
