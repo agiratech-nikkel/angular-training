@@ -1,20 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { MediaChange,MediaObserver } from '@angular/flex-layout';
+import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
   title = 'angular-Training';
-  screenSub!:Subscription; 
-  constructor(public mediaObserver:MediaObserver)
-  {}
+  screenSub!: Subscription;
+  constructor(public mediaObserver: MediaObserver) {}
   ngOnInit(): void {
-    this.screenSub  = this.mediaObserver.asObservable().subscribe((result)=>{
-      // console.log(result[1].mqAlias)
-    })
+    this.screenSub = this.mediaObserver.asObservable().subscribe((result) => {
+      console.log(result[1].mqAlias);
+      console.log('test');
+    });
   }
-
 }

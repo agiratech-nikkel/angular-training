@@ -1,22 +1,22 @@
-<div class="request" >
-    <div fxLayoutAlign="center">
-        <h1 class="request-header">Request From Empolyee</h1>
-    </div>
-    <div >
-        <owl-carousel-o [options]="customOptions" >
-            <ng-template carouselSlide *ngFor="let x of data" class="car" >
-                <mat-card class="request-carsoul" >
-                    <div fxLayout="column" fxLayoutAlign="center" fxLayoutGap="10px">
-                        <div fxLayoutAlign="center center" fxLayout="column">
-                            <img class="request-carsoul__image" src="{{x.image}}">
-                        </div>
-                        <div>
-                            <h3 fxLayoutAlign="center">{{x.name}}&nbsp;{{x.lastname}}</h3>
-                            <p class="request-carsoul__content">{{x.request}}</p>
-                        </div>
-                    </div>
-                </mat-card>
-            </ng-template>
-        </owl-carousel-o>
-    </div>
+<div class="request">
+  <div fxLayoutAlign="center">
+    <h1 class="request-header">Request From Empolyee</h1>
+  </div>
+  <div>
+    <owl-carousel-o [options]="customOptions">
+      <ng-template carouselSlide *ngFor="let x of data" class="car">
+        <mat-card class="request-carsoul">
+          <div fxLayout="column" fxLayoutAlign="center" fxLayoutGap="10px">
+            <div fxLayoutAlign="center center" fxLayout="column">
+              <img class="request-carsoul__image" src="{{ x.image }}" />
+            </div>
+            <div>
+              <h3 fxLayoutAlign="center">{{ x.name }}&nbsp;{{ x.lastname }}</h3>
+              <p class="request-carsoul__content">{{ x.request }}</p>
+            </div>
+          </div>
+        </mat-card>
+      </ng-template>
+    </owl-carousel-o>
+  </div>
 </div>

@@ -9,7 +9,6 @@ import { SharedModule } from './shared-module/shared/shared.module';
 import { Test1Component } from './test1/test1.component';
 import { Test2Component } from './test2/test2.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,9 +21,9 @@ import { Test2Component } from './test2/test2.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
-    SharedModule
+    SharedModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

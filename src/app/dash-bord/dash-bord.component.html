@@ -1,103 +1,179 @@
 <div class="dashboard" fxFlexFill>
-    <div class="dashboard__header">
-        <mat-card class="dashboard__header_navbar" fxLayout="row">
+  <div class="dashboard__header">
+    <mat-card class="dashboard__header_navbar" fxLayout="row">
+      <div fxLayout="row">
+        <mat-icon
+          class="dashboard__header_navbar-navicon"
+          (click)="sidenav.toggle()"
+          fxLayoutAlign="center center"
+          >menu</mat-icon
+        >
+        <span
+          class="dashboard__header_navbar-titel"
+          fxLayoutAlign="center center"
+          >Dashboard</span
+        >
+      </div>
+      <div fxFlex="100" fxLayoutAlign="end">
+        <img
+          class="dashboard__header_navbar-img"
+          src="../../assets/1657790548138.png"
+        />
+      </div>
+    </mat-card>
+  </div>
+  <div class="dashboard__container">
+    <mat-sidenav-container>
+      <mat-sidenav #sidenav>
+        <mat-nav-list>
+          <a mat-list-item [routerLink]="'attendance'"> Attendances </a>
+          <a mat-list-item [routerLink]="['/dashBoard/peopel']"> Peopel </a>
+          <a mat-list-item (click)="logOff()" [routerLink]="''">logoff</a>
+        </mat-nav-list>
+      </mat-sidenav>
+      <mat-sidenav-content>
+        <div
+          class="dashboard__container_card"
+          fxLayout.lt-sm="column"
+          fxLayout.lt-md="column"
+          fxLayoutGap.lt-sm="10px"
+          fxLayoutGap.lt-md="2px"
+          fxLayoutAlign="center"
+          fxFelx="100"
+          fxFelx.lt-md="80"
+          fxLayoutAlign.lt-sm="start"
+          fxLayoutGap="10px"
+        >
+          <mat-card
+            class="dashboard__container_card-timecard"
+            fxFelx="100"
+            fxLayout="row"
+            fxLayoutAlign="center center"
+          >
             <div fxLayout="row">
-                <mat-icon class="dashboard__header_navbar-navicon" (click)="sidenav.toggle()"
-                    fxLayoutAlign="center center">menu</mat-icon>
-                <span class="dashboard__header_navbar-titel" fxLayoutAlign="center center">Dashboard</span>
+              <mat-icon
+                class="dashboard__container_card-timecard-icon"
+                fxLayoutAlign="center center"
+              >
+                schedule</mat-icon
+              >
             </div>
-            <div fxFlex="100" fxLayoutAlign="end">
-                <img class="dashboard__header_navbar-img" src="../../assets/1657790548138.png" />
+            <div fxLayout="row">
+              <div fxLayout="column">
+                <div
+                  fxLayout="row"
+                  fxLayout.lt-sm="column"
+                  fxLayoutGap.lt-sm="0px"
+                  fxLayoutGap="200px"
+                >
+                  <div fxLayout.lt-sm="row" fxLayoutAlign.lt-sm="center center">
+                    <h3 class="dashboard__container_card-timecard-content">
+                      Actual&nbsp;hours
+                    </h3>
+                    <p id="card-content-p" class=""><b>173</b></p>
+                  </div>
+                  <div fxLayout.lt-sm="row" fxLayoutAlign.lt-sm="center center">
+                    <h3 class="dashboard__container_card-timecard-content">
+                      Filled&nbsp;hours
+                    </h3>
+                    <p id="card-content-p"><b>173</b></p>
+                  </div>
+                </div>
+                <hr class="dashboard__container_card-timecard-line" />
+                <div
+                  fxLayout="row"
+                  fxLayoutGap="200px"
+                  fxLayoutGap.lt-sm="0px"
+                  fxLayoutGap.lt-md="100px"
+                >
+                  <div>
+                    <p id="card-content-m">
+                      <b>100.00% filled JUN month timesheet</b>
+                    </p>
+                  </div>
+                  <div>
+                    <p id="card-content-m"><b>173/173</b></p>
+                  </div>
+                </div>
+              </div>
             </div>
-        </mat-card>
-    </div>
-    <div class="dashboard__container">
-        <mat-sidenav-container>
-            <mat-sidenav #sidenav>
-                <mat-nav-list>
-                    <a mat-list-item [routerLink]="'attendance'"> Attendances </a>
-                    <a mat-list-item [routerLink]="['/dashBoard/peopel']"> Peopel </a>
-                    <a mat-list-item (click)="logOff()" [routerLink]="''">logoff</a>
-                </mat-nav-list>
-            </mat-sidenav>
-            <mat-sidenav-content>
-                <div class="dashboard__container_card" fxLayout.lt-sm="column"fxLayout.lt-md="column" fxLayoutGap.lt-sm="10px"
-                    fxLayoutGap.lt-md="2px" fxLayoutAlign="center" fxFelx="100" fxFelx.lt-md="80" fxLayoutAlign.lt-sm="start"
-                    fxLayoutGap="10px">
-                    <mat-card class="dashboard__container_card-timecard" fxFelx="100" fxLayout="row"
-                        fxLayoutAlign="center center">
-                        <div fxLayout="row">
-                            <mat-icon class="dashboard__container_card-timecard-icon" fxLayoutAlign="center center">
-                                schedule</mat-icon>
-                        </div>
-                        <div fxLayout="row">
-                            <div fxLayout="column">
-                                <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap.lt-sm="0px" fxLayoutGap="200px">
-                                    <div fxLayout.lt-sm="row" fxLayoutAlign.lt-sm="center center">
-                                        <h3 class="dashboard__container_card-timecard-content">Actual&nbsp;hours</h3>
-                                        <p id="card-content-p" class=""><b>173</b></p>
-                                    </div>
-                                    <div fxLayout.lt-sm="row" fxLayoutAlign.lt-sm="center center">
-                                        <h3 class="dashboard__container_card-timecard-content">Filled&nbsp;hours</h3>
-                                        <p id="card-content-p"><b>173</b></p>
-                                    </div>
-                                </div>
-                                <hr class="dashboard__container_card-timecard-line">
-                                <div fxLayout="row" fxLayoutGap="200px" fxLayoutGap.lt-sm="0px" fxLayoutGap.lt-md="100px">
-                                    <div>
-                                        <p id="card-content-m"><b>100.00% filled JUN month timesheet</b></p>
-                                    </div>
-                                    <div>
-                                        <p id="card-content-m"> <b>173/173</b></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </mat-card>
-                    <mat-card class="dashboard__container_card-timecard" fxFelx="100" fxLayout="row"
-                        fxLayoutAlign="center center">
-                        <div fxLayout="row">
-                            <mat-icon class="dashboard__container_card-timecard-icon" fxLayoutAlign="center center">
-                                schedule</mat-icon>
-                        </div>
-                        <div fxLayout="row">
-                            <div fxLayout="column">
-                                <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap.lt-sm="0px" fxLayoutGap="200px">
-                                    <div fxLayout.lt-sm="row" fxLayoutAlign.lt-sm="center center">
-                                        <h3 class="dashboard__container_card-timecard-content">ACTUAL&nbsp;HOURS</h3>
-                                        <p id="card-content-p" class=""><b>181</b></p>
-                                    </div>
-                                    <div fxLayout.lt-sm="row" fxLayoutAlign.lt-sm="center center">
-                                        <h3 class="dashboard__container_card-timecard-content">FILLED&nbsp;HOURS</h3>
-                                        <p id="card-content-p"><b>181</b></p>
-                                    </div>
-                                </div>
-                                <hr class="dashboard__container_card-timecard-line">
-                                <div fxLayout="row" fxLayoutGap="200px" fxLayoutGap.lt-sm="0px"fxLayoutGap.lt-md="100px">
-                                    <div>
-                                        <p id="card-content-m"><b>100.00% filled MAY month timesheet</b></p>
-                                    </div>
-                                    <div>
-                                        <p id="card-content-m"> <b>181/181</b></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </mat-card>
+          </mat-card>
+          <mat-card
+            class="dashboard__container_card-timecard"
+            fxFelx="100"
+            fxLayout="row"
+            fxLayoutAlign="center center"
+          >
+            <div fxLayout="row">
+              <mat-icon
+                class="dashboard__container_card-timecard-icon"
+                fxLayoutAlign="center center"
+              >
+                schedule</mat-icon
+              >
+            </div>
+            <div fxLayout="row">
+              <div fxLayout="column">
+                <div
+                  fxLayout="row"
+                  fxLayout.lt-sm="column"
+                  fxLayoutGap.lt-sm="0px"
+                  fxLayoutGap="200px"
+                >
+                  <div fxLayout.lt-sm="row" fxLayoutAlign.lt-sm="center center">
+                    <h3 class="dashboard__container_card-timecard-content">
+                      ACTUAL&nbsp;HOURS
+                    </h3>
+                    <p id="card-content-p" class=""><b>181</b></p>
+                  </div>
+                  <div fxLayout.lt-sm="row" fxLayoutAlign.lt-sm="center center">
+                    <h3 class="dashboard__container_card-timecard-content">
+                      FILLED&nbsp;HOURS
+                    </h3>
+                    <p id="card-content-p"><b>181</b></p>
+                  </div>
                 </div>
-                <div>
-                    <div class="dashboard__container_graph" fxLayout.lt-md="column" fxFlex.lt-sm="100"
-                        fxFlex.lt-md="100" fxLayoutGap.lt-sm="10px" fxFlex="50" fxLayout="row"
-                        fxLayoutAlign.lt-st="center start" fxLayoutAlign="start end">
-                        <canvas id="myChart"></canvas>
-                        <canvas id="myChart-1"></canvas>
-                    </div>
+                <hr class="dashboard__container_card-timecard-line" />
+                <div
+                  fxLayout="row"
+                  fxLayoutGap="200px"
+                  fxLayoutGap.lt-sm="0px"
+                  fxLayoutGap.lt-md="100px"
+                >
+                  <div>
+                    <p id="card-content-m">
+                      <b>100.00% filled MAY month timesheet</b>
+                    </p>
+                  </div>
+                  <div>
+                    <p id="card-content-m"><b>181/181</b></p>
+                  </div>
                 </div>
-                <div>
-                    <app-feedback-carousel></app-feedback-carousel>
-                </div>
-            </mat-sidenav-content>
-        </mat-sidenav-container>
-        <app-footer></app-footer>
-    </div>
+              </div>
+            </div>
+          </mat-card>
+        </div>
+        <div>
+          <div
+            class="dashboard__container_graph"
+            fxLayout.lt-md="column"
+            fxFlex.lt-sm="100"
+            fxFlex.lt-md="100"
+            fxLayoutGap.lt-sm="10px"
+            fxFlex="50"
+            fxLayout="row"
+            fxLayoutAlign.lt-st="center start"
+            fxLayoutAlign="start end"
+          >
+            <canvas id="myChart"></canvas>
+            <canvas id="myChart-1"></canvas>
+          </div>
+        </div>
+        <div>
+          <app-feedback-carousel></app-feedback-carousel>
+        </div>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+    <app-footer></app-footer>
+  </div>
 </div>

@@ -1,167 +1,171 @@
 ::ng-deep app-people {
-    .peopel{
+  .peopel {
     &-header {
-        font-size: 20px;
+      font-size: 20px;
 
-        &__navbar {
-            background-color: #3a87bf;
-            color: white;
-            &--navicon {
-                font-size: 25px;
-                height: inherit;
-                cursor: pointer;
-            }
-
-            &--titel {
-                margin-left: 5px
-            }
-
-            &--img {
-                height: 5vh;
-                cursor: pointer;
-            }
+      &__navbar {
+        background-color: #3a87bf;
+        color: white;
+        &--navicon {
+          font-size: 25px;
+          height: inherit;
+          cursor: pointer;
         }
 
+        &--titel {
+          margin-left: 5px;
+        }
+
+        &--img {
+          height: 5vh;
+          cursor: pointer;
+        }
+      }
     }
 
     &-tabel {
-        padding: 50px 50px 0px;
-        .mat-cell {
-            font-size: 14px;
-            
-            border-right: 1px solid #d5d8ed;
-            border-left: 1px solid #d5d8ed;
-            border-bottom: 1px solid #d5d8ed;
-            border-top: 1px solid #d5d8ed;
-        }
-        .mat-cell:first-of-type{
-            padding: 0 !important;
-            background-color: #f2f3fb;
-        }
-        .mat-header-cell:first-of-type{
-            padding: 0 !important;
-            justify-content: center;
-        }
-        .mat-header-cell{
-            background: #f2f3fb;
-            color:#172148;
-            text-align: center !important;
-            font-size: 17px;
-            border-right: 1px solid #d5d8ed;
-            border-top: 1px solid #d5d8ed;
-            border-left: 1px solid #d5d8ed;
-            border-bottom: 2px solid #d5d8ed;
-            // height: ;
-        }
-        .mat-header-row{
-            height: 5vh;
-        }
-        .mat-sort-header-container{
-            justify-content: center;
-            height: 8vh;
+      padding: 50px 50px 0px;
+      .mat-cell {
+        font-size: 14px;
 
-        }
-        .mat-column-no{
-            width:5% !important;
-            text-align: center;
-        }  
-        .mat-column-email{
-            width:10% !important;
-            text-align: center;
-        }  
-        .mat-column-hiredate{
-            width:10% !important;
-            text-align: center;
-        } 
-        .mat-column-name{
-            width:12% !important;
-            text-align: center;
-        } 
-        .mat-column-phonenumber{
-            width:10% !important;
-            text-align: center;
-        } 
-        .mat-column-salary{
-            width:10% !important;
-            text-align: center;
-        } .mat-column-select{
-            width:5% !important;
-            text-align: center;
-        }
-        .mat-form-field-appearance-outline .mat-form-field-outline {
-            color: red!important;
-            // opacity: 1!important;
-        }
-        .mat-form-field-appearance-outline .mat-form-field-outline {
-            color: white;
+        border-right: 1px solid #d5d8ed;
+        border-left: 1px solid #d5d8ed;
+        border-bottom: 1px solid #d5d8ed;
+        border-top: 1px solid #d5d8ed;
+      }
+      .mat-cell:first-of-type {
+        padding: 0 !important;
+        background-color: #f2f3fb;
+      }
+      .mat-header-cell:first-of-type {
+        padding: 0 !important;
+        justify-content: center;
+      }
+      .mat-header-cell {
+        background: #f2f3fb;
+        color: #172148;
+        text-align: center !important;
+        font-size: 17px;
+        border-right: 1px solid #d5d8ed;
+        border-top: 1px solid #d5d8ed;
+        border-left: 1px solid #d5d8ed;
+        border-bottom: 2px solid #d5d8ed;
+        // height: ;
+      }
+      .mat-header-row {
+        height: 5vh;
+      }
+      .mat-sort-header-container {
+        justify-content: center;
+        height: 8vh;
+      }
+      .mat-column-no {
+        width: 5% !important;
+        text-align: center;
+      }
+      .mat-column-email {
+        width: 10% !important;
+        text-align: center;
+      }
+      .mat-column-hiredate {
+        width: 10% !important;
+        text-align: center;
+      }
+      .mat-column-name {
+        width: 12% !important;
+        text-align: center;
+      }
+      .mat-column-phonenumber {
+        width: 10% !important;
+        text-align: center;
+      }
+      .mat-column-salary {
+        width: 10% !important;
+        text-align: center;
+      }
+      .mat-column-select {
+        width: 5% !important;
+        text-align: center;
+      }
+      .mat-form-field-appearance-outline .mat-form-field-outline {
+        color: red !important;
+        // opacity: 1!important;
+      }
+      .mat-form-field-appearance-outline .mat-form-field-outline {
+        color: white;
+      }
+      &__errorMessage {
+        color: gray;
+        padding-top: 20px;
+        font-size: 20px;
+      }
+
+      &__data {
+        cursor: pointer;
+
+        &-search {
+          &-text {
+            outline-color: #37acf6;
+            border-width: 1px;
+            border-color: #cecece;
+            height: 25px;
+            width: 70%;
+            border-radius: 5px;
+            padding: 0px 0px 0px 40px;
+            background: transparent
+              url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' class='bi bi-search' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'%3E%3C/path%3E%3C/svg%3E")
+              no-repeat 13px center;
+            &::placeholder {
+              color: #858585;
+            }
           }
-        &__errorMessage {
-            color: gray;
-            padding-top: 20px;
-            font-size: 20px
         }
-
-        &__data {
-            cursor: pointer;
-
-            &-search {
-                &-text{
-                outline-color: #37acf6;
-                border-width: 1px;
-                border-color: #cecece;
-                height: 25px;
-                width: 70%;
-                border-radius: 5px;
-                padding: 0px 0px 0px 40px;
-                background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' class='bi bi-search' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'%3E%3C/path%3E%3C/svg%3E") no-repeat 13px center ;
-                &::placeholder {
-                    color: #858585
-                }
-                }
+        &-select {
+          width: 70%;
+          outline-color: #37acf6;
+          border-radius: 5px;
+          color: #6b6285;
+        }
+        &--name {
+          &_info {
+            color: #858585;
+            background: transparent;
+            justify-content: end;
+            padding-left: 5px;
+            &:hover {
+              color: #172148;
             }
-            &-select{
-                width: 70%;
-                outline-color: #37acf6;
-                border-radius: 5px;
-                color: #6b6285;
-            }
-            &--name{
-            &_info{
-                color: #858585;
-                background: transparent;
-                justify-content: end;
-                padding-left: 5px;
-                &:hover{
-                    color: #172148;
-                }
-            }
+          }
         }
-        }
+      }
 
-        &__data:hover {
-            color: #3a87bf
+      &__data:hover {
+        color: #3a87bf;
+      }
+      &__header {
+        &-icon {
+          font-size: 120%;
         }
-        &__header{
-        &-icon{
-            font-size: 120%;
-        }
+      }
     }
+    &-sidenav {
+      height: 90.5vh;
     }
-    &-sidenav{
-        height: 90.5vh;
-    }
-}
-.height{
+  }
+  .height {
     height: 1vh;
-}
+  }
 }
 ::ng-deep {
-    .mat-form-field-appearance-fill .mat-form-field-outline {
-       color: red;
+  .mat-form-field-appearance-fill .mat-form-field-outline {
+    color: red;
+  }
+  mat-form-field {
+    .mat-hint,
+    input,
+    ::placeholder,
+    .mat-form-field-label {
+      color: red;
     }
-    mat-form-field {
-       .mat-hint, input, ::placeholder, .mat-form-field-label {
-          color: red;
-       }
-    }
- }
+  }
+}

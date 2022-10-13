@@ -8,9 +8,8 @@ describe('FeedbackCarouselComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FeedbackCarouselComponent ]
-    })
-    .compileComponents();
+      declarations: [FeedbackCarouselComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(FeedbackCarouselComponent);
     component = fixture.componentInstance;

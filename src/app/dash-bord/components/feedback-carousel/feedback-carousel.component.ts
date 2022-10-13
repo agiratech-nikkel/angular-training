@@ -4,20 +4,17 @@ import { Emprequest } from 'src/app/enums.ts/emprequest.enums';
 @Component({
   selector: 'app-feedback-carousel',
   templateUrl: './feedback-carousel.component.html',
-  styleUrls: ['./feedback-carousel.component.scss']
+  styleUrls: ['./feedback-carousel.component.scss'],
 })
 export class FeedbackCarouselComponent implements OnInit {
-
-  data!:any
-  @Input() newsId:any;
+  data!: any;
+  @Input() newsId: any;
   @ViewChild('owlCar', { static: false }) owlCar: any;
 
-  constructor(
-    private requestData:Emprequest
-  ) { }
+  constructor(private requestData: Emprequest) {}
 
   ngOnInit(): void {
-    this.data = this.requestData.employeeRequest
+    this.data = this.requestData.employeeRequest;
   }
 
   customOptions: OwlOptions = {
@@ -27,26 +24,28 @@ export class FeedbackCarouselComponent implements OnInit {
     // touchDrag: true,
     // pullDrag: true,
     // autoplay:true,
-    autoplayTimeout:3000,
-    autoplayHoverPause:true,
+    autoplayTimeout: 3000,
+    autoplayHoverPause: true,
     dots: false,
     navSpeed: 900,
-    navText: ['<i class="fa-solid fa-angle-left"></i>', '<i class="fa-solid fa-angle-right"></i>'],
+    navText: [
+      '<i class="fa-solid fa-angle-left"></i>',
+      '<i class="fa-solid fa-angle-right"></i>',
+    ],
     responsive: {
       0: {
-        items: 1
+        items: 1,
       },
       400: {
-        items: 2
+        items: 2,
       },
       740: {
-        items: 3
+        items: 3,
       },
       940: {
-        items: 3
-      }
+        items: 3,
+      },
     },
-    nav: true
-  }
-
+    nav: true,
+  };
 }

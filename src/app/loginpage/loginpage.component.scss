@@ -1,22 +1,20 @@
-
-
 body {
-  font-family:sans-serif;
+  font-family: sans-serif;
 }
 
 .center-item {
   height: 100vh;
   background-color: #4e5585;
- .center-card{
+  .center-card {
     background-color: #4e5585;
     height: inherit;
-}
-.titel{
-    color:white;
-}
-.card-img{
-  height: 20vh;
-}
+  }
+  .titel {
+    color: white;
+  }
+  .card-img {
+    height: 20vh;
+  }
   .form-Field {
     padding: 40px;
     background-color: #fff;
@@ -39,8 +37,8 @@ body {
         background-color: #afbfff;
       }
     }
-    .alert{
+    .alert {
       color: red;
     }
-    }
+  }
 }

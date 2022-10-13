@@ -1,105 +1,132 @@
 <div class="profile-page">
-    <div fxLayoutAlign="center">
-        <mat-card fxFelx="100" *ngFor="let x of emplyeelist" fxLayout.lt-sm="column" fxLayout="row" fxLayoutGap="30px"
-            fxLayoutGap.lt-sm="0px" class="profile-page__profile" fxLayoutAlign="center">
+  <div fxLayoutAlign="center">
+    <mat-card
+      fxFelx="100"
+      *ngFor="let x of emplyeelist"
+      fxLayout.lt-sm="column"
+      fxLayout="row"
+      fxLayoutGap="30px"
+      fxLayoutGap.lt-sm="0px"
+      class="profile-page__profile"
+      fxLayoutAlign="center"
+    >
+      <div>
+        <button mat-button [routerLink]="['/dashBoard/peopel']">
+          <mat-icon>clear</mat-icon>
+        </button>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="center">
+        <img class="profile-page__profile-photo" src="{{ x.image }}" />
+      </div>
+      <div class="data">
+        <div fxLayoutAlign="center">
+          <div fxLayoutAlign="center" fxLayout="column">
+            <p class="profile-page__profile-name">
+              {{ x.name }}&nbsp;{{ x.lastname }}
+            </p>
+            <p fxLayoutAlign="center">#{{ x.id }}</p>
+          </div>
+        </div>
+        <div>
+          <div class="profile-page__profile-heading" fxLayout="row">
             <div>
-                <button mat-button [routerLink]="['/dashBoard/peopel']">
-                    <mat-icon>clear</mat-icon>
-                </button>
+              <p>CONTACT DETAILS</p>
             </div>
-            <div fxLayout="row" fxLayoutAlign="center">
-                <img class="profile-page__profile-photo" src="{{x.image}}">
+            <div class="profile-page__profile-line1">
+              <hr />
             </div>
-            <div class="data">
-                <div fxLayoutAlign="center">
-                    <div fxLayoutAlign="center" fxLayout="column">
-                        <p class="profile-page__profile-name">{{x.name}}&nbsp;{{x.lastname}}</p>
-                        <p fxLayoutAlign="center">#{{x.id}}</p>
-                    </div>
-                </div>
-                <div>
-                    <div class="profile-page__profile-heading" fxLayout="row">
-                        <div>
-                            <p>CONTACT DETAILS</p>
-                        </div>
-                        <div class="profile-page__profile-line1">
-                            <hr>
-                        </div>
-                    </div>
-                    <div fxLayout="row" fxLayoutGap="100px">
-                        <div class="profile-page__profile-details" fxLayoutAlign="center start" fxLayout="column">
-                            <p>Mobile </p>
-                            <p>E-mail </p>
-                        </div>
-                        <div fxLayout="column">
-                            <p>{{x.phonenumber}}</p>
-                            <p>{{x.email}}</p>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <div class="profile-page__profile-heading" fxLayout="row">
-                        <div>
-                            <p>CATEGORY</p>
-                        </div>
-                        <div class="profile-page__profile-line2">
-                            <hr>
-                        </div>
-                    </div>
-                    <div fxLayout="row" fxLayoutGap="100px">
-                        <div class="profile-page__profile-details" fxLayout="column" fxLayoutAlign="center start"
-                            fxLayout="column">
-                            <p>Department</p>
-                            <p>Division</p>
-                            <p>Location </p>
-                        </div>
-                        <div fxLayout="column">
-                            <p>{{x.Department}}</p>
-                            <p>{{x.division}}</p>
-                            <p>New York City</p>
-                        </div>
-
-                    </div>
-                </div>
-                <div>
-                    <div class="profile-page__profile-heading" fxLayout="row">
-                        <div>
-                            <p>OTHER INFORMATION</p>
-                        </div>
-                        <div class="profile-page__profile-line3">
-                            <hr>
-                        </div>
-                    </div>
-                    <div fxLayout="row" fxLayoutGap="100px">
-                        <div class="profile-page__profile-details" fxLayoutAlign="center start" fxLayout="column">
-                            <p>Date of Birth</p>
-                            <p>Age</p>
-                            <p>Expericnce</p>
-                            <p>Genders</p>
-                            <p>Performance</p>
-                            <p *ngIf="emplyeelist[0].lastproject">Last Project</p>
-                        </div>
-                        <div fxLayout="column">
-                            <p>{{x.dob|date: 'dd/MM/yyyy'}}</p>
-                            <p>{{x.dob|age}}</p>
-                            <p>{{x.Expericnce}}</p>
-                            <p>{{x.salary}}</p>
-                            <p *ngIf="emplyeelist[0].rateing == 1">&#9733;</p>
-                            <p *ngIf="emplyeelist[0].rateing == 2">&#9733;&#9733;</p>
-                            <p *ngIf="emplyeelist[0].rateing == 3">&#9733;&#9733;&#9733;</p>
-                            <p *ngIf="emplyeelist[0].rateing == 4">&#9733;&#9733;&#9733;&#9733;</p>
-                            <p *ngIf="emplyeelist[0].rateing == 5">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
-                            <p *ngIf="emplyeelist[0].lastproject">Project&nbsp;{{x.lastproject}}</p>
-                        </div>
-                    </div>
-                </div>
+          </div>
+          <div fxLayout="row" fxLayoutGap="100px">
+            <div
+              class="profile-page__profile-details"
+              fxLayoutAlign="center start"
+              fxLayout="column"
+            >
+              <p>Mobile</p>
+              <p>E-mail</p>
             </div>
-            <div fxLayoutAlign.lt-sm="center" >
-            <button mat-button (click)="onEdit()">
-                <mat-icon>create</mat-icon>
-            </button>
+            <div fxLayout="column">
+              <p>{{ x.phonenumber }}</p>
+              <p>{{ x.email }}</p>
             </div>
-        </mat-card>
-    </div>
+          </div>
+        </div>
+        <div>
+          <div class="profile-page__profile-heading" fxLayout="row">
+            <div>
+              <p>CATEGORY</p>
+            </div>
+            <div class="profile-page__profile-line2">
+              <hr />
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutGap="100px">
+            <div
+              class="profile-page__profile-details"
+              fxLayout="column"
+              fxLayoutAlign="center start"
+              fxLayout="column"
+            >
+              <p>Department</p>
+              <p>Division</p>
+              <p>Location</p>
+            </div>
+            <div fxLayout="column">
+              <p>{{ x.Department }}</p>
+              <p>{{ x.division }}</p>
+              <p>New York City</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="profile-page__profile-heading" fxLayout="row">
+            <div>
+              <p>OTHER INFORMATION</p>
+            </div>
+            <div class="profile-page__profile-line3">
+              <hr />
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutGap="100px">
+            <div
+              class="profile-page__profile-details"
+              fxLayoutAlign="center start"
+              fxLayout="column"
+            >
+              <p>Date of Birth</p>
+              <p>Age</p>
+              <p>Expericnce</p>
+              <p>Genders</p>
+              <p>Performance</p>
+              <p *ngIf="emplyeelist[0].lastproject">Last Project</p>
+            </div>
+            <div fxLayout="column">
+              <p>{{ x.dob | date: "dd/MM/yyyy" }}</p>
+              <p>{{ x.dob | age }}</p>
+              <p>{{ x.Expericnce }}</p>
+              <p>{{ x.salary }}</p>
+              <p *ngIf="emplyeelist[0].rateing == 1">&#9733;</p>
+              <p *ngIf="emplyeelist[0].rateing == 2">&#9733;&#9733;</p>
+              <p *ngIf="emplyeelist[0].rateing == 3">&#9733;&#9733;&#9733;</p>
+              <p *ngIf="emplyeelist[0].rateing == 4">
+                &#9733;&#9733;&#9733;&#9733;
+              </p>
+              <p *ngIf="emplyeelist[0].rateing == 5">
+                &#9733;&#9733;&#9733;&#9733;&#9733;
+              </p>
+              <p *ngIf="emplyeelist[0].lastproject">
+                Project&nbsp;{{ x.lastproject }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div fxLayoutAlign.lt-sm="center">
+        <button mat-button (click)="onEdit()">
+          <mat-icon>create</mat-icon>
+        </button>
+      </div>
+    </mat-card>
+  </div>
 </div>
 <app-footer></app-footer>

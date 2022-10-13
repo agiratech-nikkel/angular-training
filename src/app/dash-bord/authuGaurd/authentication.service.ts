@@ -1,23 +1,23 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-
-export class AuthenticationService{
-
-  data:any
+export class AuthenticationService {
+  data: any;
   isAuthenticate = false;
-  constructor(private router:Router) { }
+  constructor(private router: Router) {}
 
   auth(): boolean {
-    this.data = localStorage.getItem('loginStatus') ? JSON.parse(localStorage.getItem('loginStatus')!):{}
+    this.data = localStorage.getItem('loginStatus')
+      ? JSON.parse(localStorage.getItem('loginStatus')!)
+      : {};
     if (this.data.logStatus) {
-      this.isAuthenticate = true
-      return true
-    }else{
-     this.isAuthenticate = false
-    return false
+      this.isAuthenticate = true;
+      return true;
+    } else {
+      this.isAuthenticate = false;
+      return false;
     }
   }
 }

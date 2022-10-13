@@ -1,26 +1,63 @@
 <mat-card class="center-item">
-    <mat-card class="center-card" fxLayout="column" fxLayoutAlign="center center">
-        <h1 class="titel"> Hello there! 👋</h1>
-        <form class="form-Field" [formGroup]="loginForm" (ngsubmit)="login()">
-            <mat-card fxLayoutAlign="center">
-                <img fxLayoutAlign="Start" class="card-img" src="../../assets/1657790548138.png" />
-            </mat-card>
-            <div fxLayout="column">
-                <div fxLayout="column">
-                    <input fxFlex="100" class="input-box" type="text" formControlName="userName" name="uaerName"
-                        placeholder="Enter username" required>
-                    <span class="alert" *ngIf="loginForm.controls['userName'].touched && loginForm.controls['userName'].invalid">please
-                        enter your Name</span>
-                </div>
-                <div fxLayout="column">
-                    <input fxFlex="100" type="password" class="input-box" formControlName="passWord" name="passWord"
-                        placeholder="Enter password">
-                    <span class="alert" *ngIf="loginForm.controls['passWord'].touched && loginForm.controls['passWord'].invalid">please
-                        enter valid assword</span>
-                </div>
-                <button class="submit" fxFlex="100" [disabled]="!loginForm.valid" type="submit" (click)="login()"
-                    mat-button>Login</button>
-            </div>
-        </form>
-    </mat-card>
+  <mat-card class="center-card" fxLayout="column" fxLayoutAlign="center center">
+    <h1 class="titel">Hello there! 👋</h1>
+    <form class="form-Field" [formGroup]="loginForm" (ngsubmit)="login()">
+      <mat-card fxLayoutAlign="center">
+        <img
+          fxLayoutAlign="Start"
+          class="card-img"
+          src="../../assets/1657790548138.png"
+        />
+      </mat-card>
+      <div fxLayout="column">
+        <div fxLayout="column">
+          <input
+            fxFlex="100"
+            class="input-box"
+            type="text"
+            formControlName="userName"
+            name="uaerName"
+            placeholder="Enter username"
+            required
+          />
+          <span
+            class="alert"
+            *ngIf="
+              loginForm.controls['userName'].touched &&
+              loginForm.controls['userName'].invalid
+            "
+            >please enter your Name</span
+          >
+        </div>
+        <div fxLayout="column">
+          <input
+            fxFlex="100"
+            type="password"
+            class="input-box"
+            formControlName="passWord"
+            name="passWord"
+            placeholder="Enter password"
+          />
+          <span
+            class="alert"
+            *ngIf="
+              loginForm.controls['passWord'].touched &&
+              loginForm.controls['passWord'].invalid
+            "
+            >please enter valid assword</span
+          >
+        </div>
+        <button
+          class="submit"
+          fxFlex="100"
+          [disabled]="!loginForm.valid"
+          type="submit"
+          (click)="login()"
+          mat-button
+        >
+          Login
+        </button>
+      </div>
+    </form>
+  </mat-card>
 </mat-card>

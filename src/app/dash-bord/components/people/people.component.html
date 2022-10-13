@@ -2,12 +2,21 @@
   <div class="peopel-header">
     <mat-card class="peopel-header__navbar" fxLayout="row">
       <div fxLayout="row">
-        <mat-icon class="peopel-header__navbar--navicon" (click)="sidenav.toggle()" fxLayoutAlign="center center">menu
+        <mat-icon
+          class="peopel-header__navbar--navicon"
+          (click)="sidenav.toggle()"
+          fxLayoutAlign="center center"
+          >menu
         </mat-icon>
-        <span class="peopel-header__navbar--titel" fxLayoutAlign="center center">People</span>
+        <span class="peopel-header__navbar--titel" fxLayoutAlign="center center"
+          >People</span
+        >
       </div>
       <div fxFlex="100" fxLayoutAlign="end">
-        <img class="peopel-header__navbar--img" src="../../assets/1657790548138.png" />
+        <img
+          class="peopel-header__navbar--img"
+          src="../../assets/1657790548138.png"
+        />
       </div>
     </mat-card>
   </div>
@@ -16,155 +25,239 @@
     <mat-sidenav-container class="peopel-sidenav">
       <mat-sidenav #sidenav>
         <mat-nav-list>
-          <a mat-list-item [routerLink]="['/dashBoard/attendance']"> Attendances </a>
+          <a mat-list-item [routerLink]="['/dashBoard/attendance']">
+            Attendances
+          </a>
           <a mat-list-item [routerLink]="['/dashBoard']"> DashBoard </a>
           <a mat-list-item (click)="logOff()" [routerLink]="''">logoff</a>
         </mat-nav-list>
       </mat-sidenav>
       <mat-sidenav-content>
-
         <div class="peopel-tabel" fxLayout="column">
           <div fxLayoutAlign="end">
-            <mat-slide-toggle (click)="enableEdit()">Enabel In-Line Edit</mat-slide-toggle>
+            <mat-slide-toggle (click)="enableEdit()"
+              >Enabel In-Line Edit</mat-slide-toggle
+            >
           </div>
           <table fxFlex="100" matSort mat-table [dataSource]="dataSource">
-
             <div matColumnDef="select">
               <th mat-header-cell *matHeaderCellDef>
-                <mat-checkbox (change)="selectAll($event.checked)"></mat-checkbox>
+                <mat-checkbox
+                  (change)="selectAll($event.checked)"
+                ></mat-checkbox>
               </th>
-              <td class="peopel-tabel__data-col1" mat-cell *matCellDef="let element;">
-                <mat-checkbox *ngIf="checklist" [checked]="checks"></mat-checkbox>
+              <td
+                class="peopel-tabel__data-col1"
+                mat-cell
+                *matCellDef="let element"
+              >
+                <mat-checkbox
+                  *ngIf="checklist"
+                  [checked]="checks"
+                ></mat-checkbox>
               </td>
             </div>
 
             <div matColumnDef="no">
               <th mat-sort-header mat-header-cell *matHeaderCellDef>
-                <mat-icon class="peopel-tabel__header-icon">perm_identity</mat-icon>&nbsp;ID
+                <mat-icon class="peopel-tabel__header-icon"
+                  >perm_identity</mat-icon
+                >&nbsp;ID
               </th>
-              <td class="peopel-tabel__data" mat-cell *matCellDef="let element" (click)="onRoute(element)">
-                {{element.id}} </td>
+              <td
+                class="peopel-tabel__data"
+                mat-cell
+                *matCellDef="let element"
+                (click)="onRoute(element)"
+              >
+                {{ element.id }}
+              </td>
             </div>
 
             <div matColumnDef="name">
               <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                <mat-icon class="peopel-tabel__header-icon">perm_identity</mat-icon>&nbsp;Name
+                <mat-icon class="peopel-tabel__header-icon"
+                  >perm_identity</mat-icon
+                >&nbsp;Name
               </th>
               <td class="peopel-tabel__data" mat-cell *matCellDef="let element">
-                <input matTooltip="Double Click to Save" [(ngModel)]="element.name" *ngIf="element.isEdit"
-                  (dblclick)="onEdit(element)" value="{{element.name}}">
-                <input matTooltip="Double Click to Save" [(ngModel)]="element.lastname" *ngIf="element.isEdit"
-                  (dblclick)="onEdit(element)" value="{{element.lastname}}">
-                <span *ngIf="!element.isEdit"
-                  (click)="onSave(element)">{{element.name}}&nbsp;&nbsp;{{element.lastname}}</span><span
-                  class="peopel-tabel__data--name_info"><i class="fa-solid fa-angle-down"></i></span>
+                <input
+                  matTooltip="Double Click to Save"
+                  [(ngModel)]="element.name"
+                  *ngIf="element.isEdit"
+                  (dblclick)="onEdit(element)"
+                  value="{{ element.name }}"
+                />
+                <input
+                  matTooltip="Double Click to Save"
+                  [(ngModel)]="element.lastname"
+                  *ngIf="element.isEdit"
+                  (dblclick)="onEdit(element)"
+                  value="{{ element.lastname }}"
+                />
+                <span *ngIf="!element.isEdit" (click)="onSave(element)"
+                  >{{ element.name }}&nbsp;&nbsp;{{ element.lastname }}</span
+                ><span class="peopel-tabel__data--name_info"
+                  ><i class="fa-solid fa-angle-down"></i
+                ></span>
               </td>
             </div>
 
             <div matColumnDef="email">
               <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                <mat-icon class="peopel-tabel__header-icon">mail</mat-icon>&nbsp;Email
+                <mat-icon class="peopel-tabel__header-icon">mail</mat-icon
+                >&nbsp;Email
               </th>
               <td class="peopel-tabel__data" mat-cell *matCellDef="let element">
-                <input matTooltip="Double Click to Save" [(ngModel)]="element.email" *ngIf="element.isEdit"
-                  (dblclick)="onEdit(element)" value="{{element.email}}">
-                <span *ngIf="!element.isEdit" (click)="onSave(element)">{{element.email}}</span>
+                <input
+                  matTooltip="Double Click to Save"
+                  [(ngModel)]="element.email"
+                  *ngIf="element.isEdit"
+                  (dblclick)="onEdit(element)"
+                  value="{{ element.email }}"
+                />
+                <span *ngIf="!element.isEdit" (click)="onSave(element)">{{
+                  element.email
+                }}</span>
               </td>
             </div>
 
             <div matColumnDef="phonenumber">
               <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                <mat-icon class="peopel-tabel__header-icon">phone</mat-icon>&nbsp;Phone Number
+                <mat-icon class="peopel-tabel__header-icon">phone</mat-icon
+                >&nbsp;Phone Number
               </th>
               <td class="peopel-tabel__data" mat-cell *matCellDef="let element">
-                <input matTooltip="Double Click to Save" [(ngModel)]="element.phonenumber" *ngIf="element.isEdit"
-                  (dblclick)="onEdit(element)" value=" {{element.phonenumber}} ">
-                <span *ngIf="!element.isEdit" (click)="onSave(element)"> {{element.phonenumber}} </span>
+                <input
+                  matTooltip="Double Click to Save"
+                  [(ngModel)]="element.phonenumber"
+                  *ngIf="element.isEdit"
+                  (dblclick)="onEdit(element)"
+                  value=" {{ element.phonenumber }} "
+                />
+                <span *ngIf="!element.isEdit" (click)="onSave(element)">
+                  {{ element.phonenumber }}
+                </span>
               </td>
             </div>
             <div matColumnDef="hiredate">
               <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                <mat-icon class="peopel-tabel__header-icon">badge</mat-icon>&nbsp;Department
+                <mat-icon class="peopel-tabel__header-icon">badge</mat-icon
+                >&nbsp;Department
               </th>
               <td class="peopel-tabel__data" mat-cell *matCellDef="let element">
-                <select matTooltip="Double Click to Save" [(ngModel)]="element.hiredate" *ngIf="element.isEdit"
-                  (dblclick)="onEdit(element)">
-                  <option *ngFor="let op of options3" [value]="op.id">{{op.key}}</option>
+                <select
+                  matTooltip="Double Click to Save"
+                  [(ngModel)]="element.hiredate"
+                  *ngIf="element.isEdit"
+                  (dblclick)="onEdit(element)"
+                >
+                  <option *ngFor="let op of options3" [value]="op.id">
+                    {{ op.key }}
+                  </option>
                 </select>
-                <span *ngIf="!element.isEdit" (click)="onSave(element)"> {{element.hiredate}} </span>
+                <span *ngIf="!element.isEdit" (click)="onSave(element)">
+                  {{ element.hiredate }}
+                </span>
               </td>
             </div>
 
             <div matColumnDef="salary">
               <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                <mat-icon class="peopel-tabel__header-icon">male</mat-icon>&nbsp;Gender
+                <mat-icon class="peopel-tabel__header-icon">male</mat-icon
+                >&nbsp;Gender
               </th>
               <td class="peopel-tabel__data" mat-cell *matCellDef="let element">
-                <select [(ngModel)]="element.salary" (dblclick)="onEdit(element)" *ngIf="element.isEdit">
-                  <option *ngFor="let op of options" [value]="op.id">{{op.key}}</option>
+                <select
+                  [(ngModel)]="element.salary"
+                  (dblclick)="onEdit(element)"
+                  *ngIf="element.isEdit"
+                >
+                  <option *ngFor="let op of options" [value]="op.id">
+                    {{ op.key }}
+                  </option>
                 </select>
-                <span *ngIf="!element.isEdit" (click)="onSave(element)"> {{element.salary}} </span>
+                <span *ngIf="!element.isEdit" (click)="onSave(element)">
+                  {{ element.salary }}
+                </span>
               </td>
             </div>
-            <div matColumnDef="null">
-
-            </div>
+            <div matColumnDef="null"></div>
 
             <ng-container matColumnDef="no1">
-              <th mat-header-cell *matHeaderCellDef> </th>
+              <th mat-header-cell *matHeaderCellDef></th>
             </ng-container>
 
             <ng-container matColumnDef="select1">
-              <th mat-header-cell *matHeaderCellDef> </th>
+              <th mat-header-cell *matHeaderCellDef></th>
             </ng-container>
 
             <div matColumnDef="name1">
               <th mat-header-cell *matHeaderCellDef>
                 <mat-form-field class="example-full-width" appearance="fill">
-                  <input matInput class="peopel-tabel__data-search-text" [(ngModel)]="search" placeholder="Search"
-                    (keyup)="filter()">
+                  <input
+                    matInput
+                    class="peopel-tabel__data-search-text"
+                    [(ngModel)]="search"
+                    placeholder="Search"
+                    (keyup)="filter()"
+                  />
                 </mat-form-field>
               </th>
             </div>
 
             <div matColumnDef="email1">
-              <th mat-header-cell *matHeaderCellDef>
-              </th>
+              <th mat-header-cell *matHeaderCellDef></th>
             </div>
 
-
-
             <div matColumnDef="phonenumber1">
-              <th mat-header-cell *matHeaderCellDef>
-              </th>
+              <th mat-header-cell *matHeaderCellDef></th>
             </div>
             <div matColumnDef="hiredate1">
               <th mat-header-cell *matHeaderCellDef>
-                <select class="peopel-tabel__data-select" [(ngModel)]="value" (change)="op()">
-                  <option *ngFor="let op of options3" [value]="op.id">{{op.key}}</option>
+                <select
+                  class="peopel-tabel__data-select"
+                  [(ngModel)]="value"
+                  (change)="op()"
+                >
+                  <option *ngFor="let op of options3" [value]="op.id">
+                    {{ op.key }}
+                  </option>
                 </select>
               </th>
             </div>
 
             <div matColumnDef="salary1">
               <th mat-header-cell *matHeaderCellDef>
-                <select class="peopel-tabel__data-select" [(ngModel)]="value" (change)="op()">
-                  <option *ngFor="let op of options" [value]="op.id">{{op.key}}</option>
+                <select
+                  class="peopel-tabel__data-select"
+                  [(ngModel)]="value"
+                  (change)="op()"
+                >
+                  <option *ngFor="let op of options" [value]="op.id">
+                    {{ op.key }}
+                  </option>
                 </select>
               </th>
             </div>
-            <div matColumnDef="null1">
-
-            </div>
-
+            <div matColumnDef="null1"></div>
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
           </table>
-          <p class="peopel-tabel__errorMessage" fxLayoutAlign="center center" *ngIf="displayNoRecords">No Data found</p>
-          <mat-paginator [pageSizeOptions]="[5, 10,15, 20,25,30]" showFirstLastButtons
-            aria-label="Select page of periodic elements">
+          <p
+            class="peopel-tabel__errorMessage"
+            fxLayoutAlign="center center"
+            *ngIf="displayNoRecords"
+          >
+            No Data found
+          </p>
+          <mat-paginator
+            [pageSizeOptions]="[5, 10, 15, 20, 25, 30]"
+            showFirstLastButtons
+            aria-label="Select page of periodic elements"
+          >
           </mat-paginator>
         </div>
       </mat-sidenav-content>

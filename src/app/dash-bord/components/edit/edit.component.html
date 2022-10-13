@@ -1,170 +1,258 @@
 <div class="edit-page">
-    <div fxFelx="100" *ngFor="let x of data" fxLayout="column" fxLayoutGap="30px" fxLayoutGap.lt-sm="0px"
-        class="edit-page__form" fxLayoutAlign="center">
-        <div fxLayout="row" fxLayoutAlign="center">
-            <img class="edit-page__form-photo" src="{{x.image}}">
+  <div
+    fxFelx="100"
+    *ngFor="let x of data"
+    fxLayout="column"
+    fxLayoutGap="30px"
+    fxLayoutGap.lt-sm="0px"
+    class="edit-page__form"
+    fxLayoutAlign="center"
+  >
+    <div fxLayout="row" fxLayoutAlign="center">
+      <img class="edit-page__form-photo" src="{{ x.image }}" />
+    </div>
+    <form [formGroup]="editForm" (ngsubmit)="editSubmit()">
+      <div class="edit-page__form--field">
+        <div fxLayoutAlign="center">
+          <div
+            fxLayoutAlign="center"
+            fxLayoutGap="20px"
+            fxLayout="row"
+            fxLayout.lt-sm="column"
+          >
+            <div class="edit-page__form--field_Name">
+              <mat-form-field appearance="fill">
+                <mat-label>Frist Name</mat-label>
+                <input
+                  matInput
+                  placeholder="Enter Frist Name"
+                  formControlName="name"
+                />
+              </mat-form-field>
+              <p
+                class="edit-page__form--field_error"
+                *ngIf="editForm.controls['name'].invalid"
+              >
+                Please Name
+              </p>
+            </div>
+            <div class="edit-page__form--field_lastName">
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label> Last Name</mat-label>
+                <input
+                  matInput
+                  placeholder="Enter Last Name"
+                  formControlName="lastName"
+                />
+              </mat-form-field>
+              <p
+                class="edit-page__form--field_error"
+                *ngIf="editForm.controls['lastName'].invalid"
+              >
+                Please Last Name
+              </p>
+            </div>
+          </div>
         </div>
-        <form [formGroup]="editForm" (ngsubmit)="editSubmit()">
-            <div class="edit-page__form--field">
-                <div fxLayoutAlign="center">
-                    <div fxLayoutAlign="center" fxLayoutGap="20px" fxLayout="row" fxLayout.lt-sm="column">
-                        <div class="edit-page__form--field_Name">
-                            <mat-form-field appearance="fill">
-                                <mat-label>Frist Name</mat-label>
-                                <input matInput placeholder="Enter Frist Name" formControlName="name">
-                            </mat-form-field>
-                            <p class="edit-page__form--field_error" *ngIf="editForm.controls['name'].invalid">Please
-                                Name</p>
-                        </div>
-                        <div class="edit-page__form--field_lastName">
-                            <mat-form-field class="example-full-width" appearance="fill">
-                                <mat-label> Last Name</mat-label>
-                                <input matInput placeholder="Enter Last Name" formControlName="lastName">
-                            </mat-form-field>
-                            <p class="edit-page__form--field_error" *ngIf="editForm.controls['lastName'].invalid">Please
-                                Last Name</p>
-                        </div>
-                    </div>
-                </div>
-                <div fxLayoutAlign="center" fxLayoutAlign.lt-sm="start">
-                    <div>
-                        <div class="edit-page__profile-heading" fxLayout="row">
-                            <div>
-                                <p>CONTACT DETAILS</p>
-                            </div>
-                        </div>
-                        <div fxLayoutAlign="center" fxLayout="row" fxLayoutGap="20px" fxLayout.lt-sm="column">
-                            <div class="edit-page__form--field_phoneNumber">
-                                <mat-form-field class="example-full-width" appearance="fill">
-                                    <mat-label>phone Number</mat-label>
-                                    <input matInput placeholder="Enter Last Name" formControlName="phoneNumber">
-                                </mat-form-field>
-                                <p class="edit-page__form--field_error"
-                                    *ngIf="editForm.controls['phoneNumber'].invalid">Please enter valid Phone Number</p>
-                            </div>
-                            <div>
-                                <mat-form-field class="edit-page__form--field_phoneNumber" appearance="fill">
-                                    <mat-label>phone Number</mat-label>
-                                    <input matInput placeholder="Enter Last Name" formControlName="email">
-                                </mat-form-field>
-                                <p class="edit-page__form--field_error" *ngIf="editForm.controls['email'].invalid">
-                                    Please enter Valide Email</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div fxLayoutAlign="center" fxLayoutAlign.lt-sm="start">
-                    <div>
-                        <div class="edit-page__profile-heading" fxLayout="row">
-                            <div>
-                                <p>CATEGORY</p>
-                            </div>
-                        </div>
-                        <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px">
-                            <mat-form-field appearance="fill">
-                                <mat-label>Department</mat-label>
-                                <mat-select formControlName="deprtment" required>
-                                    <mat-option>--</mat-option>
-                                    <mat-option *ngFor="let op of deprtment" [value]="op.value">
-                                        {{op.key}}
-                                    </mat-option>
-                                </mat-select>
-                                <!-- <mat-error *ngIf="animalControl.hasError('required')">Please choose an animal</mat-error> -->
-                                <!-- <mat-hint>{{animalControl.value?.sound}}</mat-hint> -->
-                            </mat-form-field>
-                            <mat-form-field appearance="fill">
-                                <mat-label>Division</mat-label>
-                                <mat-select formControlName="division" required>
-                                    <mat-option>--</mat-option>
-                                    <mat-option *ngFor="let op of division" [value]="op.value">
-                                        {{op.key}}
-                                    </mat-option>
-                                </mat-select>
-                                <!-- <mat-error *ngIf="animalControl.hasError('required')">Please choose an animal</mat-error> -->
-                                <!-- <mat-hint>{{animalControl.value?.sound}}</mat-hint> -->
-                            </mat-form-field>
-                        </div>
-                    </div>
+        <div fxLayoutAlign="center" fxLayoutAlign.lt-sm="start">
+          <div>
+            <div class="edit-page__profile-heading" fxLayout="row">
+              <div>
+                <p>CONTACT DETAILS</p>
+              </div>
+            </div>
+            <div
+              fxLayoutAlign="center"
+              fxLayout="row"
+              fxLayoutGap="20px"
+              fxLayout.lt-sm="column"
+            >
+              <div class="edit-page__form--field_phoneNumber">
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>phone Number</mat-label>
+                  <input
+                    matInput
+                    placeholder="Enter Last Name"
+                    formControlName="phoneNumber"
+                  />
+                </mat-form-field>
+                <p
+                  class="edit-page__form--field_error"
+                  *ngIf="editForm.controls['phoneNumber'].invalid"
+                >
+                  Please enter valid Phone Number
+                </p>
+              </div>
+              <div>
+                <mat-form-field
+                  class="edit-page__form--field_phoneNumber"
+                  appearance="fill"
+                >
+                  <mat-label>phone Number</mat-label>
+                  <input
+                    matInput
+                    placeholder="Enter Last Name"
+                    formControlName="email"
+                  />
+                </mat-form-field>
+                <p
+                  class="edit-page__form--field_error"
+                  *ngIf="editForm.controls['email'].invalid"
+                >
+                  Please enter Valide Email
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div fxLayoutAlign="center" fxLayoutAlign.lt-sm="start">
+          <div>
+            <div class="edit-page__profile-heading" fxLayout="row">
+              <div>
+                <p>CATEGORY</p>
+              </div>
+            </div>
+            <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px">
+              <mat-form-field appearance="fill">
+                <mat-label>Department</mat-label>
+                <mat-select formControlName="deprtment" required>
+                  <mat-option>--</mat-option>
+                  <mat-option *ngFor="let op of deprtment" [value]="op.value">
+                    {{ op.key }}
+                  </mat-option>
+                </mat-select>
+                <!-- <mat-error *ngIf="animalControl.hasError('required')">Please choose an animal</mat-error> -->
+                <!-- <mat-hint>{{animalControl.value?.sound}}</mat-hint> -->
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>Division</mat-label>
+                <mat-select formControlName="division" required>
+                  <mat-option>--</mat-option>
+                  <mat-option *ngFor="let op of division" [value]="op.value">
+                    {{ op.key }}
+                  </mat-option>
+                </mat-select>
+                <!-- <mat-error *ngIf="animalControl.hasError('required')">Please choose an animal</mat-error> -->
+                <!-- <mat-hint>{{animalControl.value?.sound}}</mat-hint> -->
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="edit-page__profile-heading" fxLayout="row">
+            <div>
+              <p>OTHER INFORMATION</p>
+            </div>
+            <div class="edit-page__profile-line3">
+              <hr />
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutGap="100px">
+            <div fxLayout="column">
+              <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px">
+                <div>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Choose a date</mat-label>
+                    <input
+                      matInput
+                      [matDatepicker]="picker"
+                      formControlName="dob"
+                    />
+                    <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
+                    <mat-hint
+                      class="edit-page__form--field_error"
+                      *ngIf="editForm.controls['dob'].invalid"
+                      >Please enter Experiance
+                    </mat-hint>
+                    <mat-datepicker-toggle
+                      matSuffix
+                      [for]="picker"
+                    ></mat-datepicker-toggle>
+                    <mat-datepicker [startAt]="x.dob" #picker></mat-datepicker>
+                  </mat-form-field>
+                  <mat-error
+                    class="edit-page__form--field_error"
+                    *ngIf="editForm.controls['dob'].invalid"
+                    >Please enter Date Of Birth
+                  </mat-error>
                 </div>
                 <div>
-                    <div class="edit-page__profile-heading" fxLayout="row">
-                        <div>
-                            <p>OTHER INFORMATION</p>
-                        </div>
-                        <div class="edit-page__profile-line3">
-                            <hr>
-                        </div>
-                    </div>
-                    <div fxLayout="row" fxLayoutGap="100px">
-                        <div fxLayout="column">
-                            <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px">
-                                <div>
-                                    <mat-form-field appearance="fill">
-                                        <mat-label>Choose a date</mat-label>
-                                        <input matInput [matDatepicker]="picker" formControlName="dob">
-                                        <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
-                                        <mat-hint class="edit-page__form--field_error"
-                                            *ngIf="editForm.controls['dob'].invalid">Please enter Experiance </mat-hint>
-                                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                                        <mat-datepicker [startAt]="x.dob" #picker></mat-datepicker>
-                                    </mat-form-field>
-                                    <mat-error class="edit-page__form--field_error"
-                                        *ngIf="editForm.controls['dob'].invalid">Please enter Date Of Birth
-                                    </mat-error>
-                                </div>
-                                <div>
-                                    <mat-form-field class="edit-page__form--field_expricnce" appearance="fill">
-                                        <mat-label>Experiance</mat-label>
-                                        <input matInput placeholder="Enter Last Name" formControlName="expericnce">
-                                    </mat-form-field>
-                                    <mat-error class="edit-page__form--field_error"
-                                        *ngIf="editForm.controls['expericnce'].invalid">Please enter username
-                                    </mat-error>
-                                </div>
-                                <mat-form-field appearance="fill">
-                                    <mat-label>Genders</mat-label>
-                                    <mat-select formControlName="gender" required>
-                                        <mat-option>--</mat-option>
-                                        <mat-option *ngFor="let op of gender" [value]="op.value">
-                                            {{op.key}}
-                                        </mat-option>
-                                    </mat-select>
- 
-                                </mat-form-field>
-                            </div>
-                            <div fxLayoutAlign="center" fxLayout.lt-sm="column" fxLayout="row" fxLayoutGap="20px">
-                                <mat-form-field appearance="fill">
-                                    <mat-label>Rating</mat-label>
-                                    <mat-select formControlName="rating" required>
-                                        <mat-option>--</mat-option>
-                                        <mat-option *ngFor="let op of rating" [value]="op.value">
-                                            {{op.key}}
-                                        </mat-option>
-                                    </mat-select>
-                                  
-                                </mat-form-field>
-                                <mat-form-field appearance="fill">
-                                    <mat-label>Last Project</mat-label>
-                                    <mat-select formControlName="lastProject" required>
-                                        <mat-option>--</mat-option>
-                                        <mat-option *ngFor="let op of lastProject" [value]="op.value">
-                                            {{op.key}}
-                                        </mat-option>
-                                    </mat-select>
-                                    <!-- <mat-error *ngIf="animalControl.hasError('required')">Please choose an animal</mat-error> -->
-                                    <!-- <mat-hint>{{animalControl.value?.sound}}</mat-hint> -->
-                                </mat-form-field>
-                            </div>
-                        </div>
-                    </div>
+                  <mat-form-field
+                    class="edit-page__form--field_expricnce"
+                    appearance="fill"
+                  >
+                    <mat-label>Experiance</mat-label>
+                    <input
+                      matInput
+                      placeholder="Enter Last Name"
+                      formControlName="expericnce"
+                    />
+                  </mat-form-field>
+                  <mat-error
+                    class="edit-page__form--field_error"
+                    *ngIf="editForm.controls['expericnce'].invalid"
+                    >Please enter username
+                  </mat-error>
                 </div>
+                <mat-form-field appearance="fill">
+                  <mat-label>Genders</mat-label>
+                  <mat-select formControlName="gender" required>
+                    <mat-option>--</mat-option>
+                    <mat-option *ngFor="let op of gender" [value]="op.value">
+                      {{ op.key }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div
+                fxLayoutAlign="center"
+                fxLayout.lt-sm="column"
+                fxLayout="row"
+                fxLayoutGap="20px"
+              >
+                <mat-form-field appearance="fill">
+                  <mat-label>Rating</mat-label>
+                  <mat-select formControlName="rating" required>
+                    <mat-option>--</mat-option>
+                    <mat-option *ngFor="let op of rating" [value]="op.value">
+                      {{ op.key }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                  <mat-label>Last Project</mat-label>
+                  <mat-select formControlName="lastProject" required>
+                    <mat-option>--</mat-option>
+                    <mat-option
+                      *ngFor="let op of lastProject"
+                      [value]="op.value"
+                    >
+                      {{ op.key }}
+                    </mat-option>
+                  </mat-select>
+                  <!-- <mat-error *ngIf="animalControl.hasError('required')">Please choose an animal</mat-error> -->
+                  <!-- <mat-hint>{{animalControl.value?.sound}}</mat-hint> -->
+                </mat-form-field>
+              </div>
             </div>
-            <div fxLayoutAlign="center" color="warn" fxLayoutGap="20px">
-                <button class="edit-page__cal-btn" mat-button (click)="cancelSubmit()">Cancel</button>
+          </div>
+        </div>
+      </div>
+      <div fxLayoutAlign="center" color="warn" fxLayoutGap="20px">
+        <button class="edit-page__cal-btn" mat-button (click)="cancelSubmit()">
+          Cancel
+        </button>
 
-                <button [disabled]="!editForm.valid" class="edit-page__sub-btn" type="submit" mat-button
-                    (click)="editSubmit()">Save</button>
-            </div>
-        </form>
-    </div>
+        <button
+          [disabled]="!editForm.valid"
+          class="edit-page__sub-btn"
+          type="submit"
+          mat-button
+          (click)="editSubmit()"
+        >
+          Save
+        </button>
+      </div>
+    </form>
+  </div>
 </div>
